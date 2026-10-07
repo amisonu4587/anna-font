@@ -1,0 +1,42 @@
+
+.skeleton {
+  height: 16px;
+  border-radius: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #eeeeee 25%,
+    #dddddd 50%,
+    #eeeeee 75%
+  );
+
+  background-size: 200% 100%;
+
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-number {
+  width: 40px;
+  margin: auto;
+}
+
+.skeleton-name {
+  width: 60%;
+  margin: auto;
+}
+
+.skeleton-row td {
+  height: 42px;
+  vertical-align: middle;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+

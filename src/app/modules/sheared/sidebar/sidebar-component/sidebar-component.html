@@ -1,0 +1,317 @@
+<aside class="main-sidebar elevation-4 sidebar-light-purple">
+    <!-- Brand Logo -->
+    <a routerLink="/dashboard" class="brand-link logo-switch" style="background-color: #3c8dbc; color: white">
+        <img
+            src="/images/logo/anna-logo-small.png"
+            alt="East Shore District Health Department"
+            class="brand-image-xl logo-xs"
+        />
+
+        <img
+            src="/images/logo/anna-logo.png"
+            alt="East Shore District Health Department"
+            class="brand-image-xs logo-xl"
+        />
+
+        <!-- <span
+      class="brand-text font-weight-bold"
+      style="padding-left: 43px; font-size: 19px;">
+      ANNA
+    </span> -->
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar" style="background: #222d32">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+
+          <ul
+    class="nav nav-pills nav-sidebar flex-column"
+    data-widget="treeview"
+    role="menu"
+    data-accordion="false"
+>
+    <!-- Dashboard -->
+    <li class="nav-item">
+        <a routerLink="/dashboard" class="nav-link">
+            <i class="text-sm nav-icon fas fa-tachometer-alt"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+
+    <!-- Associate Data -->
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon far fa-plus-square"></i>
+            <p>
+                Associate Data
+                <i class="fas fa-angle-left right"></i>
+            </p>
+        </a>
+
+        <ul class="nav nav-treeview ml-2">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Areas</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a routerLink="/associate-data/roles" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Roles</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:void(0)" routerLink="/associate-data/users" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Users</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="fas fa-circle-notch nav-icon"></i>
+                    <p>Permission</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <!-- Reports -->
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Reports
+                <i class="fas fa-angle-left right"></i>
+            </p>
+        </a>
+
+        <ul class="nav nav-treeview ml-2">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Violation Report</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Payment Report</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                        Money Report By<br />
+                        Description
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <!-- Permits -->
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Permits
+                <i class="fas fa-angle-left right"></i>
+            </p>
+        </a>
+
+        <ul class="nav nav-treeview ml-2">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Restaurant / Retail Food</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Mobile Food</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Cosmetology/Body Care</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Temporary Food</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pool</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Farmers Market</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Hotel/Motel</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Day-Care</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <!-- Complaint (no children - stays a plain nav-item) -->
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-file-contract"></i>
+            <p>Complaint</p>
+        </a>
+    </li>
+
+    <!-- Schedule -->
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Schedule
+                <i class="fas fa-angle-left right"></i>
+            </p>
+        </a>
+
+        <ul class="nav nav-treeview ml-2">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Food</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Mobile</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Cosmetology</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Temporary Food</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pool</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Farmers Market</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <!-- Inspections -->
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Inspections
+                <i class="fas fa-angle-left right"></i>
+            </p>
+        </a>
+
+        <ul class="nav nav-treeview ml-2">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Food</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Mobile Food</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Cosmetology</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Temporary Food</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pool</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Hotel Motel</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Farmers Market</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+        </nav>
+    </div>
+</aside>

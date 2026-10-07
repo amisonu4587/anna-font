@@ -1,0 +1,34 @@
+.logo-xl.brand-image-xs, .logo-xs.brand-image-xs {
+    left: 59px;
+    top: 12px;
+    width: 46%;
+}
+
+
+.nav-sidebar {
+
+  .nav-item.has-treeview {
+
+    > .nav-link {
+      cursor: pointer;
+    }
+
+    > .nav-treeview {
+      display: none;
+    }
+
+    > .nav-link .right {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &.menu-open {
+      > .nav-treeview {
+        display: block;
+      }
+
+      > .nav-link .right {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}

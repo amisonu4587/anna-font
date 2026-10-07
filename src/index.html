@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <title>Anna</title> <!-- Favicon -->
+  <link rel="icon" href="/images/logo/anna-logo-small.png" type="image/x-icon"> <!-- Bootstrap -->
+  <link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css"> <!-- Site CSS -->
+  <link rel="stylesheet" href="/css/site.css"> <!-- Font Awesome -->
+  <link rel="stylesheet" href="/plugins/font-awesome/css/all.min.css"> <!-- AdminLTE -->
+  <link rel="stylesheet" href="/plugins/adminLte/dist/css/adminlte.min.css"> <!-- jQuery UI -->
+  <link rel="stylesheet" href="/plugins/adminLte/plugins/jquery-ui/jquery-ui.css" type="text/css">
+  <!-- Bootstrap DateTimePicker -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+  <!-- Date Range Picker -->
+  <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css"> <!-- Select2 -->
+  <link rel="stylesheet" href="/plugins/select2/css/select2.min.css"> <!-- Select2 Bootstrap 4 Theme -->
+  <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"> <!-- Custom Styles -->
+  <style>
+    [class*="sidebar-light-"] .nav-sidebar>.nav-item.menu-open>.nav-link,
+    [class*="sidebar-light-"] .nav-sidebar>.nav-item:hover>.nav-link {
+      background-color: black;
+    }
+
+    [class*="sidebar-light-"] .nav-treeview>.nav-item>.nav-link:hover {
+      background-color: black;
+    }
+
+    [class*="sidebar-light-"] .nav-item p,
+    [class*="sidebar-light-"] .nav-item .nav-icon {
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .content-header.sticky {
+      position: sticky;
+      top: 40px;
+      z-index: 999;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .loadingWrapper {
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .loadingText {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: #999;
+      width: 100px;
+      height: 30px;
+      margin: -38px 0 0 -55px;
+      text-align: center;
+      font-family: 'PT Sans Narrow', sans-serif;
+      font-size: 20px;
+    }
+
+    .loadingContent {
+      display: block;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      width: 170px;
+      height: 170px;
+      margin: -85px 0 0 -85px;
+    }
+
+    .btn-custom {
+      font-weight: 400;
+      color: #00050a;
+      border-color: #00050a;
+    }
+
+    .btn-custom:hover {
+      font-weight: 400;
+      background-color: #00050a;
+      border-color: #00050a;
+      color: white;
+    }
+
+    .ui-autocomplete.ui-front {
+      max-height: 250px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 9999 !important;
+      background: #f0f3f4;
+      font-size: 11px;
+    }
+
+    .ui-autocomplete-loading {
+      background: white url("/plugins/adminLte/dist/img/ui-anim_basic_16x16.gif") right center no-repeat;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+      color: #000 !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+      border: 1px solid #ced4da !important;
+      min-height: calc(1.8125rem + 2px) !important;
+    }
+
+    .select2-container--default .select2-selection--multiple {
+      border: 1px solid #ced4da !important;
+      min-height: calc(1.8125rem + 2px) !important;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+      line-height: calc(1.8125rem - 0.25rem) !important;
+    }
+
+    .hideOnLoad {
+      display: none;
+    }
+
+    :root {
+      --siteTextColor: #00050a;
+      --siteBorderColor: #00050a;
+    }
+
+    .dateField {
+      background: linear-gradient(#f8f9fa, #ffffff) !important;
+    }
+
+    .datetimeField {
+      background: linear-gradient(#f8f9fa, #ffffff) !important;
+    }
+  </style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed"> <app-root></app-root> <!-- jQuery -->
+  <script src="/plugins/jquery/dist/jquery.min.js"></script> <!-- jQuery UI -->
+  <script src="/plugins/adminLte/plugins/jquery-ui/jquery-ui.js"></script> <!-- Bootstrap -->
+  <script src="/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script> <!-- AdminLTE -->
+  <script src="/plugins/adminLte/dist/js/adminlte.min.js"></script> <!-- Bootstrap File Input -->
+  <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> <!-- Moment -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+  <!-- Bootstrap DateTimePicker -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+  <!-- Date Range Picker -->
+  <script src="/plugins/daterangepicker/daterangepicker.js"></script> <!-- SweetAlert 2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Site JS - load after jQuery -->
+  <script src="/js/site.js"></script>
+</body>
+
+</html>

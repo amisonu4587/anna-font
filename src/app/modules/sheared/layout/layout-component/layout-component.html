@@ -1,0 +1,30 @@
+ <div class="wrapper">
+
+
+        <app-navbar-component></app-navbar-component>
+        <app-sidebar-component></app-sidebar-component>
+
+
+        <div class="content-wrapper text-sm " style="margin-top:50px">
+
+
+            <div id="loading-wrapper" class="loadingWrapper">
+                <div id="loading-text" class="loadingText"><img src=""
+                        alt="TTTTTT" class="img-circle" style="max-width:70px;max-height: 70px"></div>
+                <div id="loading-content" class="loadingContent"><i class="fas fa-spinner fa-pulse"
+                         style="color: #3c8dbc; font-size:160px"></i>
+                </div>
+            </div>
+            <main role="main">
+                <router-outlet></router-outlet>
+            </main>
+
+        </div>
+
+        <footer class="main-footer">
+            <strong>Copyright &copy; <a style="color:#255fa1;" href="">The City Of Anna</a></strong>
+            All rights reserved.
+        </footer>
+        <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"
+            style="color:white;background:255fa1;"><i class="fas fa-chevron-up"></i></a>
+    </div>

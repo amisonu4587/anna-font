@@ -1,0 +1,83 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2 mt-3">
+            <div class="col-sm-6">
+                <h1 class="d-inline">Roles</h1>
+            </div>
+
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <a href="">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="">Roles</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="row m-2">
+        <div class="col-md-12">
+            <div class="card card-outline" style="border-top: 3px solid #022e5f">
+                <div class="card-body" style="overflow-x: auto">
+                    @if (loading()) {
+
+                    <!-- Skeleton Loader -->
+                    <table class="table table-bordered table-striped table-sm shadow">
+                        <thead>
+                            <tr>
+                                <th class="bg-info"># SL No.</th>
+                                <th class="bg-info">Role Name</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @for (item of [1, 2, 3, 4, 5]; track item) {
+                            <tr class="skeleton-row">
+                                <td>
+                                    <div class="skeleton skeleton-number"></div>
+                                </td>
+
+                                <td>
+                                    <div class="skeleton skeleton-name"></div>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    } @else {
+
+                    <!-- Actual Table -->
+                    <table id="tabUserListView" class="table table-bordered table-striped table-sm shadow" style="text-align: center">
+                        <thead>
+                            <tr>
+                                <th class="bg-info"># SL No.</th>
+                                <th class="bg-info">Role Name</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @for (role of allRoles(); track role.id; let i = $index) {
+                            <tr>
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ role.name }}</td>
+                            </tr>
+                            } @if (allRoles().length === 0) {
+                            <tr>
+                                <td colspan="2" class="text-center">No roles found</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

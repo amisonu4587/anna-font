@@ -1,0 +1,146 @@
+.login-container {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: lightgray;
+}
+
+.login-box {
+  width: 400px;
+  max-width: 95%;
+}
+
+.login-card {
+  border-radius: 10px;
+  border: none;
+  border-top: 3px solid #022E5F;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background: #fff;
+  border: none;
+  padding: 25px 0 0px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+  padding: 25px 30px 30px;
+}
+
+.login-logo {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
+
+/* Input */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.input-group {
+  height: 45px;
+  background: #fff;
+}
+
+.input-group-text {
+  background: #fff;
+  border: none;
+  color: #555;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 18px;
+  padding-right: 10px;
+}
+
+.form-control {
+  height: 45px;
+
+  border: none;
+  outline: none;
+
+  font-size: 15px;
+
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  border: none;
+  box-shadow: none !important;
+}
+
+.password-icon {
+  padding-left: 8px;
+  padding-right: 18px;
+  cursor: pointer;
+}
+
+/* Remember me */
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 14px;
+}
+
+.remember-me input {
+  cursor: pointer;
+}
+
+.remember-me label {
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+/* Login button */
+
+.btn-custom {
+  height: 35px;
+
+  background: #255fa1;
+  color: #fff;
+
+  border: none;
+  border-radius: 20px;
+
+  font-size: 15px;
+}
+
+.btn-custom:hover {
+  background: #034477;
+  color: #fff;
+}
+
+/* Links */
+
+.link-row {
+  margin-top: 10px;
+}
+
+.link-row a {
+  color: #00050a;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.link-row a:hover {
+  color: #022E5F;
+}
+
+.errorMessage{
+    color: red;
+}
+
