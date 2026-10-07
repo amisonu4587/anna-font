@@ -36,7 +36,7 @@
                         </thead>
 
                         <tbody>
-                            @for (item of [1, 2, 3, 4, 5]; track item) {
+                            @for (item of [1, 2, 3]; track item) {
                             <tr class="skeleton-row">
                                 <td>
                                     <div class="skeleton skeleton-number"></div>
@@ -49,6 +49,37 @@
                             }
                         </tbody>
                     </table>
+
+
+
+                    <div class="pagination-skeleton">
+
+                        <div class="skeleton skeleton-pagination-info"></div>
+
+                        <div class="pagination-skeleton-buttons">
+
+                            <!-- Previous -->
+                            <div class="skeleton skeleton-page-btn-wide"></div>
+
+                            <!-- Pages -->
+                            <div class="skeleton skeleton-page-btn"></div>
+                            <div class="skeleton skeleton-page-btn"></div>
+                            <div class="skeleton skeleton-page-btn"></div>
+                            <div class="skeleton skeleton-page-btn"></div>
+                            <div class="skeleton skeleton-page-btn"></div>
+
+                            <!-- Dots -->
+                            <div class="skeleton skeleton-page-btn"></div>
+
+                            <!-- Last -->
+                            <div class="skeleton skeleton-page-btn"></div>
+
+                            <!-- Next -->
+                            <div class="skeleton skeleton-page-btn-wide"></div>
+
+                        </div>
+
+                        </div>
 
                     } @else {
 
@@ -75,7 +106,17 @@
                         </tbody>
                     </table>
 
+
+                     <app-pagination
+                        [currentPage]="currentPage"
+                        [totalItems]="totalData"
+                        [pageSize]="pageSize"
+                        (pageChange)="loadData($event)">
+                    </app-pagination>
+
                     }
+
+                  
                 </div>
             </div>
         </div>

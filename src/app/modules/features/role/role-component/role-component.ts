@@ -4,6 +4,7 @@ import {
   OnInit,
   signal
 } from '@angular/core';
+import { Pagination } from '../../../sheared/common/pagination/pagination';
 
 import { RoleService } from '../service/role-service';
 import { ToastrService } from '@relynn/ngx-toastr';
@@ -13,7 +14,7 @@ import { RoleResponse } from '../models/RoleResponse';
 @Component({
   selector: 'app-role-component',
   standalone: true,
-  imports: [],
+  imports: [Pagination],
   templateUrl: './role-component.html',
   styleUrl: './role-component.css'
 })
@@ -23,6 +24,10 @@ export class RoleComponent implements OnInit {
 
   allRoles = signal<any[]>([]);
   loading = signal<boolean>(true);
+
+  currentPage = 1;
+  totalData = 0;
+  pageSize = 50;
 
   constructor(
     private roleser: RoleService,
@@ -44,6 +49,7 @@ export class RoleComponent implements OnInit {
       next: (res: RoleResponse) => {
         if(res.isSuccess == true){
           this.allRoles.set(res.result ?? []);
+          this.totalData = res.result.length;
           console.log(res);
           this.loading.set(false);
           // this.toastr.success(res.message);
@@ -57,6 +63,16 @@ export class RoleComponent implements OnInit {
         this.toastr.error('Unable to load roles');
       }
     });
+  }
+
+ loadData(page: number): void {
+
+    this.currentPage = page;
+
+    console.log('Loading page:', page);
+
+   
+
   }
 
 }

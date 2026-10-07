@@ -1,4 +1,3 @@
-
 .skeleton {
   height: 16px;
   border-radius: 4px;
@@ -12,25 +11,102 @@
 
   background-size: 200% 100%;
 
-  animation: skeleton-loading 1.5s infinite;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
 }
 
-.skeleton-number {
-  width: 40px;
-  margin: auto;
-}
 
-.skeleton-name {
-  width: 60%;
-  margin: auto;
-}
+/* ==========================================
+   Table Skeleton
+========================================== */
 
 .skeleton-row td {
   height: 42px;
   vertical-align: middle;
 }
 
+
+/* SL No. Skeleton */
+
+.skeleton-number {
+  width: 40px;
+  height: 16px;
+
+  margin: auto;
+}
+
+
+/* Role Name Skeleton */
+
+.skeleton-name {
+  width: 60%;
+  height: 16px;
+
+  margin: auto;
+}
+
+
+/* ==========================================
+   Pagination Skeleton
+========================================== */
+
+.pagination-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+
+/* "Showing 1 to 10..." Skeleton */
+
+.skeleton-pagination-info {
+  width: 190px;
+  height: 16px;
+
+  border-radius: 4px;
+}
+
+
+/* Pagination Buttons */
+
+.pagination-skeleton-buttons {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+
+/* Individual Pagination Button */
+
+.skeleton-page-btn {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 5px;
+}
+
+
+/* Previous / Next Skeleton */
+
+.skeleton-page-btn-wide {
+  width: 75px;
+  height: 38px;
+
+  border-radius: 5px;
+}
+
+
+/* ==========================================
+   Skeleton Animation
+========================================== */
+
 @keyframes skeleton-loading {
+
   0% {
     background-position: 200% 0;
   }
@@ -38,5 +114,26 @@
   100% {
     background-position: -200% 0;
   }
+
 }
 
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+
+  .pagination-skeleton {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .pagination-skeleton-buttons {
+    width: 100%;
+    overflow: hidden;
+  }
+
+}
