@@ -1,9 +1,4 @@
-
-import {
-  Component,
-  OnInit,
-  signal
-} from '@angular/core';
+import {Component,OnInit,signal} from '@angular/core';
 import { Pagination } from '../../../sheared/common/pagination/pagination';
 
 import { RoleService } from '../service/role-service';
@@ -29,17 +24,11 @@ export class RoleComponent implements OnInit {
   totalData = 0;
   pageSize = 50;
 
-  constructor(
-    private roleser: RoleService,
-    private toastr: ToastrService
-  ) {}
+  constructor(private roleser: RoleService,private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    console.log('RoleComponent initialized');
-
-    this.includeSuperAdmin =
-      localStorage.getItem('role') === 'superadmin';
-
+    // console.log('RoleComponent initialized');
+    this.includeSuperAdmin = localStorage.getItem('role') === 'superadmin';
     this.getRoles();
   }
 
@@ -52,7 +41,6 @@ export class RoleComponent implements OnInit {
           this.totalData = res.result.length;
           console.log(res);
           this.loading.set(false);
-          // this.toastr.success(res.message);
         }else{
           this.toastr.success(res.message);
         }

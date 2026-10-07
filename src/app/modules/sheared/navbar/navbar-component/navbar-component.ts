@@ -14,6 +14,9 @@ export class NavbarComponent {
 
   constructor(private navser:NavbarService,private router:Router,private toastr: ToastrService) { }
 
+  roleName:string = "";
+  name:string = "";
+
   logOutClick(){
     this.navser.logout().subscribe((res:LogoutResponse)=>{
       if(res.isSuccess === true){
@@ -34,5 +37,14 @@ export class NavbarComponent {
 
     })
   }
+
+   ngOnInit(): void {
+
+     this.name = localStorage.getItem('name') ?? '';
+     this.roleName = localStorage.getItem('role') ?? '';
+
+
+   }
+
 
 }
