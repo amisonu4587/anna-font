@@ -22,7 +22,7 @@ export class RoleComponent implements OnInit {
 
   currentPage = 1;
   totalData = 0;
-  pageSize = 50;
+  pageSize = 10;
 
   constructor(private roleser: RoleService,private toastr: ToastrService) {}
 
@@ -59,7 +59,7 @@ export class RoleComponent implements OnInit {
 
     console.log('Loading page:', page);
 
-   
+
 
   }
 

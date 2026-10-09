@@ -21,7 +21,11 @@ export class UserService {
     );
   }
 
+  userList(data:any):Observable<any>{
+    return this.httpser.postRequest(constants.backendUrl+constants.apiEndPiont.userList,data);
+  }
 
-  
+
+
 
 }

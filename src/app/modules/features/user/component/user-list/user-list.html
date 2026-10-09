@@ -1,157 +1,228 @@
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2 mt-3">
-            <div class="col-sm-6">
-                <h1 class="d-inline">Users</h1>
-                <a routerLink="/associate-data/users/create" class="btn btn-info btn-sm btn-flat d-inline-block ml-2 mt-n2 elevation-2 text-white"
-                    >Add New User</a
-                >
-            </div>
+  <div class="container-fluid">
+    <div class="row mb-2 mt-3">
+      <div class="col-sm-6">
+        <h1 class="d-inline">Users</h1>
+        <a routerLink="/associate-data/users/create"
+          class="btn btn-info btn-sm btn-flat d-inline-block ml-2 mt-n2 elevation-2 text-white">Add New User</a>
+      </div>
 
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">
-                        <a href="">Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="">Users</a>
-                    </li>
-                </ol>
-            </div>
-        </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <a href="">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="">Users</a>
+          </li>
+        </ol>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="content">
-    <div class="row m-2">
-        <div class="col-md-12">
-            <div class="card card-outline" style="border-top: 3px solid #022e5f">
-                <div class="card-header">
-                    <form action="https://2210-esdhd.i2g11.com/user" method="GET">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="name"> Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                        class="form-control form-control-sm text-sm rounded-0"
-                                        value=""
-                                        placeholder=" Name"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="col-md-2 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        id="email"
-                                        class="form-control form-control-sm text-sm rounded-0"
-                                        value=""
-                                        placeholder="Email"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="col-md-1 col-sm-6 col-xs-12" style="margin-top: 32px !important">
-                                <button
-                                    type="Submit"
-                                    class="btn btn-info btn-sm btn-flat d-inline-block elevation-2 text-white"
-                                >
-                                    Search
-                                </button>
-                            </div>
-
-                            <div class="col-md-4 col-sm-6 col-xs-12 mt-4"></div>
-
-                            <div class="col-md-2 col-sm-6 col-xs-12 mt-4">
-                                Show&nbsp;&nbsp;<select
-                                    class="form-control-sm rounded-0"
-                                    name="selectItemPerPage"
-                                    id="selectItemPerPage"
-                                    onchange="this.form.submit();"
-                                >
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>
-                                &nbsp;&nbsp;Entries
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="card-body" style="overflow-x: auto">
-                    <table
-                        id="tabUserListView"
-                        class="table table-bordered table-striped table-sm shadow"
-                        style="text-align: center"
-                    >
-                        <thead>
-                            <tr>
-                                <th class="bg-info"># SL No.</th>
-                                <th class="bg-info">User Name</th>
-                                <th class="bg-info">Email</th>
-                                <th class="bg-info">User Type</th>
-
-                                <th class="bg-info text-center">Status</th>
-                                <th class="bg-info text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="font-size: 13px !important">1</td>
-                                <td style="font-size: 13px !important">I2G Test</td>
-                                <td style="font-size: 13px !important">mitchi@inspect2go.com</td>
-                                <td style="font-size: 13px !important">Inspector</td>
-                                <td class="text-center">
-                                    <button type="button" class="btn btn-success btn-xs btn-flat">Active</button>
-                                </td>
-                                <td class="text-center">
-                                    <a
-                                        href="https://2210-esdhd.i2g11.com/user/eyJpdiI6InFrR2VncE5Ja2dsRUF3Ni9xbUc3c1E9PSIsInZhbHVlIjoiTHlKMlpzNlAwSWFhdFRwUThLYXZqUT09IiwibWFjIjoiNDQ2YWYwZWE0ODNjMGJhMjNkMTVkNjU5ZjM2MDQ2NjY2NzcyYjU1ODQ4MzNiZmM0ZDU5YzFkMzEwZTkxNTUyMSIsInRhZyI6IiJ9/edit"
-                                        type="button"
-                                        class="btn btn-info btn-xs btn-flat text-white"
-                                        >Edit</a
-                                    >
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot></tfoot>
-                    </table>
-
-                    <div class="row">
-                        <div class="col-md-6 mt-3">Showing 1 to 10 of 11 entries</div>
-                        <div class="col-md-6 mt-2 float-right">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination float-right">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                    </li>
-
-                                    <li class="page-item active">
-                                        <a class="page-link">1</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="https://2210-esdhd.i2g11.com/user?page=2">2</a>
-                                    </li>
-
-                                    <li class="page-item">
-                                        <a class="page-link" href="https://2210-esdhd.i2g11.com/user?page=2" rel="next"
-                                            >Next</a
-                                        >
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+  <div class="row m-2">
+    <div class="col-md-12">
+      <div class="card card-outline" style="border-top: 3px solid #022e5f">
+        <div class="card-header">
+          @if (loading()) {
+          <!-- Search Form Skeleton -->
+          <div class="row">
+            <div class="col-md-2 col-sm-12">
+              <div class="form-group">
+                <div class="skeleton skeleton-label"></div>
+                <div class="skeleton skeleton-input"></div>
+              </div>
             </div>
+
+            <div class="col-md-2 col-sm-12">
+              <div class="form-group">
+                <div class="skeleton skeleton-label"></div>
+                <div class="skeleton skeleton-input"></div>
+              </div>
+            </div>
+
+            <div class="col-md-1 col-sm-6" style="margin-top: 32px">
+              <div class="skeleton skeleton-search-btn"></div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mt-4"></div>
+
+            <div class="col-md-2 col-sm-6 mt-4">
+              <div class="skeleton skeleton-entries"></div>
+            </div>
+          </div>
+          } @else {
+          <!-- Actual Search Form -->
+          <form (ngSubmit)="getUserList()">
+            <div class="row">
+              <div class="col-md-2 col-sm-12">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" name="name" id="name" class="form-control form-control-sm text-sm rounded-0"
+                    placeholder="Name" />
+                </div>
+              </div>
+
+              <div class="col-md-2 col-sm-12">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" name="email" id="email" class="form-control form-control-sm text-sm rounded-0"
+                    placeholder="Email" />
+                </div>
+              </div>
+
+              <div class="col-md-1 col-sm-6" style="margin-top: 32px">
+                <button type="submit" class="btn btn-info btn-sm btn-flat text-white">
+                  Search
+                </button>
+              </div>
+
+              <div class="col-md-4 col-sm-6 mt-4"></div>
+
+              <div class="col-md-2 col-sm-6 mt-4">
+                Show
+                <select class="form-control-sm rounded-0" name="pageSize" (change)="currentPage = 1; getUserList()">
+                  <option>10</option>
+                  <option>25</option>
+                  <option>50</option>
+                  <option>100</option>
+                </select>
+                Entries
+              </div>
+            </div>
+          </form>
+          }
         </div>
+
+
+
+        <div class="card-body" style="overflow-x: auto">
+          @if (loading()) {
+
+          <!-- Skeleton Loader -->
+          <table class="table table-bordered table-striped table-sm shadow">
+            <thead>
+              <tr>
+                <th class="bg-info"># SL No.</th>
+                <th class="bg-info">User Name</th>
+                <th class="bg-info">Email</th>
+                <th class="bg-info">User Type</th>
+                <th class="bg-info">Status</th>
+                <th class="bg-info">Action</th>
+              </tr>
+            </thead>
+
+            <tbody> @for (item of [1, 2, 3, 4, 5]; track item) { <tr class="skeleton-row">
+                <td>
+                  <div class="skeleton skeleton-number"></div>
+                </td>
+                <td>
+                  <div class="skeleton skeleton-name"></div>
+                </td>
+                <td>
+                  <div class="skeleton skeleton-email"></div>
+                </td>
+                <td>
+                  <div class="skeleton skeleton-role"></div>
+                </td>
+                <td>
+                  <div class="skeleton skeleton-status"></div>
+                </td>
+                <td>
+                  <div class="skeleton skeleton-action"></div>
+                </td>
+              </tr> } </tbody>
+          </table>
+
+
+
+          <div class="pagination-skeleton">
+
+            <div class="skeleton skeleton-pagination-info"></div>
+
+            <div class="pagination-skeleton-buttons">
+
+              <!-- Previous -->
+              <div class="skeleton skeleton-page-btn-wide"></div>
+
+              <!-- Pages -->
+              <div class="skeleton skeleton-page-btn"></div>
+              <div class="skeleton skeleton-page-btn"></div>
+              <div class="skeleton skeleton-page-btn"></div>
+              <div class="skeleton skeleton-page-btn"></div>
+              <div class="skeleton skeleton-page-btn"></div>
+
+              <!-- Dots -->
+              <div class="skeleton skeleton-page-btn"></div>
+
+              <!-- Last -->
+              <div class="skeleton skeleton-page-btn"></div>
+
+              <!-- Next -->
+              <div class="skeleton skeleton-page-btn-wide"></div>
+
+            </div>
+
+          </div>
+
+          } @else {
+
+
+          <table id="tabUserListView" class="table table-bordered table-striped table-sm shadow"
+            style="text-align: center">
+            <thead>
+              <tr>
+                <th class="bg-info"># SL No.</th>
+                <th class="bg-info">User Name</th>
+                <th class="bg-info">Email</th>
+                <th class="bg-info">User Type</th>
+
+                <th class="bg-info text-center">Status</th>
+                <th class="bg-info text-center">Action</th>
+              </tr>
+            </thead>
+
+
+            <tbody>
+              @for (user of allUsers(); track user.id; let i = $index) {
+              <tr>
+                <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td class="text-center">
+                  <button type="button" class="btn btn-success btn-xs btn-flat">{{user.status}}</button>
+                </td>
+                <td class="text-center">
+                  <button class="btn btn-info btn-xs btn-flat text-white">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+              }
+
+              @if (allUsers().length === 0) {
+              <tr>
+                <td colspan="6" class="text-center">No users found</td>
+              </tr>
+              }
+            </tbody>
+
+
+
+            <tfoot></tfoot>
+          </table>
+
+          <app-pagination [currentPage]="currentPage" [totalItems]="totalData" [pageSize]="pageSize"
+            (pageChange)="loadData($event)">
+          </app-pagination>
+          }
+
+
+        </div>
+      </div>
     </div>
+  </div>
 </section>
