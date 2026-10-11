@@ -55,44 +55,46 @@
           </div>
           } @else {
           <!-- Actual Search Form -->
-          <form (ngSubmit)="getUserList()">
-            <div class="row">
-              <div class="col-md-2 col-sm-12">
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-control form-control-sm text-sm rounded-0"
-                    placeholder="Name" />
-                </div>
+          <div class="row align-items-end">
+
+            <form [formGroup]="filterForm" (ngSubmit)="searchUsers()" class="row col-md-9 align-items-end g-2">
+              <!-- Name -->
+              <div class="col-md-3 col-sm-12">
+                <label for="name">Name</label>
+                <input id="name" type="text" class="form-control form-control-sm rounded-0" formControlName="name"
+                  placeholder="Name" />
               </div>
 
-              <div class="col-md-2 col-sm-12">
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" name="email" id="email" class="form-control form-control-sm text-sm rounded-0"
-                    placeholder="Email" />
-                </div>
+              <!-- Email -->
+              <div class="col-md-3 col-sm-12">
+                <label for="email">Email</label>
+                <input id="email" type="text" class="form-control form-control-sm rounded-0" formControlName="email"
+                  placeholder="Email" />
               </div>
 
-              <div class="col-md-1 col-sm-6" style="margin-top: 32px">
-                <button type="submit" class="btn btn-info btn-sm btn-flat text-white">
+              <!-- Search -->
+              <div class="col-md-2 col-sm-12">
+                <button type="submit" class="btn btn-info btn-sm text-white">
                   Search
                 </button>
               </div>
+            </form>
 
-              <div class="col-md-4 col-sm-6 mt-4"></div>
+            <div class="col-md-3 col-sm-12 d-flex align-items-center gap-2 mt-2">
+              <label for="pageSize" class="mb-0">Show</label>
 
-              <div class="col-md-2 col-sm-6 mt-4">
-                Show
-                <select class="form-control-sm rounded-0" name="pageSize" (change)="currentPage = 1; getUserList()">
-                  <option>10</option>
-                  <option>25</option>
-                  <option>50</option>
-                  <option>100</option>
-                </select>
-                Entries
-              </div>
+              <select id="pageSize" class="form-select form-select-sm rounded-0" style="width: 80px" [value]="pageSize"
+                (change)="changePageSize($event)">
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+
+              <span>Entries</span>
             </div>
-          </form>
+
+          </div>
           }
         </div>
 

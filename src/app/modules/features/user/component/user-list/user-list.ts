@@ -4,18 +4,19 @@ import { UserService } from '../../services/user-service';
 import { ToastrService } from '@relynn/ngx-toastr';
 import { Pagination } from '../../../../sheared/common/pagination/pagination';
 import { NgClass } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  imports: [RouterLink,Pagination],
+  imports: [RouterLink,Pagination,ReactiveFormsModule],
   selector: 'app-user-list',
   styleUrl: './user-list.css',
   templateUrl: './user-list.html',
 })
 export class UserList {
-
+  filterForm!: FormGroup;
   currentPage: number = 1;
   totalData: number = 0;
-  pageSize: number = 1;
+  pageSize: number = 10;
   filterText: string = "";
   status: string = "";
   sortingBy: string = "";
@@ -27,18 +28,35 @@ export class UserList {
 
 
 
-  constructor(private userSer:UserService,private router:Router,private toastr: ToastrService){}
+  constructor(private userSer:UserService,private router:Router,private toastr: ToastrService,private fb: FormBuilder){}
 
 
   ngOnInit(): void {
+    this.filterForm = this.fb.group({
+      name: [''],
+      email: [''],
+      roleId: [0],
+      status: ['']
+    });
+    this.getUserList();
+  }
+  searchUsers(): void {
+    this.loading.set(true);
+
+    this.currentPage = 1;
     this.getUserList();
   }
 
 
   getUserList(): void {
+
+    const formValue = this.filterForm.getRawValue();
     const request = {
-      filterText: this.filterText,
-      status: this.status,
+      name: formValue.name || '',
+      email: formValue.email || '',
+      roleId: Number(formValue.roleId) || 0,
+      status: formValue.status || '',
+
       filterDto: {
         sortingBy: this.sortingBy,
         ascendingOrder: this.ascendingOrder,
@@ -68,6 +86,18 @@ export class UserList {
         }
 
     })
+  }
+
+
+  changePageSize(event: Event): void {
+    this.loading.set(true);
+
+    const select = event.target as HTMLSelectElement;
+
+    this.pageSize = Number(select.value);
+    this.currentPage = 1;
+
+    this.getUserList();
   }
 
 
