@@ -5,6 +5,7 @@ import { ToastrService } from '@relynn/ngx-toastr';
 import { Pagination } from '../../../../sheared/common/pagination/pagination';
 import { NgClass } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { RoleResponse } from '../../../role/models/RoleResponse';
 
 @Component({
   imports: [RouterLink,Pagination,ReactiveFormsModule],
@@ -25,6 +26,10 @@ export class UserList {
   allUsers = signal<any[]>([]);
   loading = signal<boolean>(true);
 
+  includeSuperAdmin = false;
+
+  allRoles = signal<any[]>([]);
+
 
 
 
@@ -32,17 +37,20 @@ export class UserList {
 
 
   ngOnInit(): void {
+
+    this.includeSuperAdmin =
+    localStorage.getItem('role') === 'superadmin';
     this.filterForm = this.fb.group({
       name: [''],
       email: [''],
-      roleId: [0],
+      roleId: [''],
       status: ['']
     });
     this.getUserList();
+    this.getRoles();
   }
   searchUsers(): void {
     this.loading.set(true);
-
     this.currentPage = 1;
     this.getUserList();
   }
@@ -56,7 +64,6 @@ export class UserList {
       email: formValue.email || '',
       roleId: Number(formValue.roleId) || 0,
       status: formValue.status || '',
-
       filterDto: {
         sortingBy: this.sortingBy,
         ascendingOrder: this.ascendingOrder,
@@ -66,16 +73,11 @@ export class UserList {
     };
 
     this.userSer.userList(request).subscribe((res:any)=>{
-
         if(res.isSuccess == true){
           this.currentPage = res.result.currentPage;
           this.totalData = res.result.totalRecords;
           this.pageSize = res.result.recordsPerPage;
-
-
           this.allUsers.set(res.result.userSearchResultDto);
-
-
           // this.toastr.success(res.message);
           this.loading.set(false);
 
@@ -101,16 +103,35 @@ export class UserList {
   }
 
 
-   loadData(page: number): void {
+  loadData(page: number): void {
     this.loading.set(true);
 
     this.currentPage = page;
     this.getUserList();
     console.log('Loading page:', page);
-
-
-
   }
+
+  clearFormData(){
+    this.filterForm.reset();
+  }
+
+
+   getRoles(): void {
+      this.userSer.getRole(this.includeSuperAdmin).subscribe({
+        next: (res: RoleResponse) => {
+          if(res.isSuccess == true){
+            this.allRoles.set(res.result ?? []);
+          }else{
+            this.toastr.success(res.message);
+          }
+        },
+        error: (err) => {
+          console.error('ROLE API ERROR:', err);
+          this.toastr.error('Unable to load roles');
+        }
+      });
+    }
+
 
 
 

@@ -26,8 +26,7 @@
     <div class="col-md-12">
       <div class="card card-outline" style="border-top: 3px solid #022e5f">
         <div class="card-header">
-          @if (loading()) {
-          <!-- Search Form Skeleton -->
+          <!-- @if (loading()) {
           <div class="row">
             <div class="col-md-2 col-sm-12">
               <div class="form-group">
@@ -53,29 +52,58 @@
               <div class="skeleton skeleton-entries"></div>
             </div>
           </div>
-          } @else {
+          } @else { -->
           <!-- Actual Search Form -->
           <div class="row align-items-end">
 
             <form [formGroup]="filterForm" (ngSubmit)="searchUsers()" class="row col-md-9 align-items-end g-2">
+              <input id="id" type="hidden" class="form-control form-control-sm rounded-0" formControlName="id"
+                  placeholder="Name" />
               <!-- Name -->
-              <div class="col-md-3 col-sm-12">
+              <div class="col-md-2 col-sm-12">
                 <label for="name">Name</label>
                 <input id="name" type="text" class="form-control form-control-sm rounded-0" formControlName="name"
                   placeholder="Name" />
               </div>
 
               <!-- Email -->
-              <div class="col-md-3 col-sm-12">
+              <div class="col-md-2 col-sm-12">
                 <label for="email">Email</label>
                 <input id="email" type="text" class="form-control form-control-sm rounded-0" formControlName="email"
                   placeholder="Email" />
+              </div>
+
+               <div class="col-md-2 col-sm-12">
+                <label for="status">Status</label>
+                <input id="status" type="text" class="form-control form-control-sm rounded-0" formControlName="status"
+                  placeholder="Status" />
+              </div>
+
+
+              <div class="col-md-2 col-sm-12 ">
+
+                  <label for="roleId">User Type</label>
+                  <select class="form-control form-control-sm rounded-0" id="roleId" formControlName="roleId"
+                    name="roleId" required="">
+                    <option value="" selected>All</option>
+                      @for (role of allRoles(); track role.id; let i = $index) {
+                        <option value="{{role.id}}">{{role.name}}</option>
+                      }
+
+                  </select>
               </div>
 
               <!-- Search -->
               <div class="col-md-2 col-sm-12">
                 <button type="submit" class="btn btn-info btn-sm text-white">
                   Search
+                </button>
+              </div>
+
+              <!-- Clear -->
+              <div class="col-md-2 col-sm-12">
+                <button class="btn btn-danger btn-sm text-white" (click)="clearFormData()">
+                  Clear
                 </button>
               </div>
             </form>
@@ -95,7 +123,7 @@
             </div>
 
           </div>
-          }
+          <!-- } -->
         </div>
 
 

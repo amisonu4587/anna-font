@@ -25,6 +25,10 @@ export class UserService {
     return this.httpser.postRequest(constants.backendUrl+constants.apiEndPiont.userList,data);
   }
 
+  upsertUser(data:any):Observable<any>{
+    return this.httpser.postRequest(constants.backendUrl+constants.apiEndPiont.upsertUser,data);
+  }
+
 
 
 

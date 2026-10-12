@@ -27,29 +27,50 @@
   <div class="row m-2">
     <div class="col-12">
       <div class="card card-outline" style="border-top: 3px solid #022e5f">
-        <form method="post" enctype="multipart/form-data" id="frmCreateUser" action="">
+        <form method="post" enctype="multipart/form-data" id="frmCreateUser" [formGroup]="userForm" (ngSubmit)="submitUser()">
 
           <div class="card-body">
             <div class="row">
               <input type="hidden" name="id" id="id" value="0" placeholder="" required="" />
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <label for="selectUserType">User Type</label>
-                  <select class="form-control form-control-sm text-sm rounded-0 text-capitalize" id="selectUserType"
-                    name="selectUserType" required="">
-                    <option value="" disabled="">Select User Type</option>
-                      @for (role of allRoles(); track role.id; let i = $index) {
-                        <option value="{{role.id}}">{{role.name}}</option>
-                      }
+                  <label for="roleId">User Type <span class="error">*</span></label>
+                  <select
+                      class="form-control form-control-sm text-sm rounded-0 text-capitalize"
+                      id="roleId"
+                      name="roleId"
+                      formControlName="roleId"
+                    >
+                      <option value="" disabled>Select User Type</option>
 
-                  </select>
+                      @for (role of allRoles(); track role.id) {
+                        <option [value]="role.id">
+                          {{ role.name }}
+                        </option>
+                      }
+                    </select>
+
+                     @if (f['roleId'].hasError('required') && f['roleId'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
+
+
+
                 </div>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <label for="inputFName">Name</label>
+                  <label for="inputFName">Name <span class="error">*</span></label>
                   <input type="text" class="form-control form-control-sm text-sm rounded-0" name="name"
-                    id="name" value="" placeholder="Enter Name" required="" />
+                    id="name" value="" placeholder="Enter Name" required="" formControlName="name"/>
+
+                    @if (f['name'].hasError('required') && f['name'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
                 </div>
               </div>
             </div>
@@ -59,31 +80,41 @@
                 <div class="form-group">
                   <label for="cellPhone">CellPhone</label>
                   <input type="text" class="form-control form-control-sm text-sm rounded-0" name="cellPhone"
-                    id="cellPhone" value="" placeholder="Enter cellPhone" required="" />
+                    id="cellPhone" value="" placeholder="Enter cellPhone" required="" formControlName="cellphone"/>
                 </div>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label for="workPhone">WorkPhone</label>
                   <input type="text" class="form-control form-control-sm text-sm rounded-0" name="workPhone"
-                    id="workPhone" value="" placeholder="Enter workPhone" required="" />
+                    id="workPhone" value="" placeholder="Enter workPhone" required="" formControlName="workPhone"/>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email">Email <span class="error">*</span></label>
                   <input type="" class="form-control form-control-sm text-sm rounded-0 scripts"
-                    name="email" id="email" value="" placeholder="Enter Email" />
+                    name="email" id="email" value="" placeholder="Enter Email" formControlName="email"/>
+                    @if (f['email'].hasError('required') && f['email'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
                 </div>
               </div>
 
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <label for="password">Password</label>
+                  <label for="password">Password <span class="error">*</span></label>
                   <input type="password" class="form-control form-control-sm text-sm rounded-0" id="password"
-                    name="password" placeholder="Password" value="" required="" autocomplete="new-password" />
+                    name="password" placeholder="Password" value="" required="" autocomplete="new-password" formControlName="password"/>
+                    @if (f['password'].hasError('required') && f['password'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
                 </div>
               </div>
             </div>
@@ -92,18 +123,23 @@
 
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <label for="selectStatus">Is Active</label>
-                  <select class="form-control form-control-sm text-sm rounded-0" name="selectStatus" id="selectStatus">
-                    <option value="0">Inactive</option>
-                    <option value="1" selected="">Active</option>
+                  <label for="selectStatus">Is Active <span class="error">*</span></label>
+                  <select class="form-control form-control-sm text-sm rounded-0" name="selectStatus" id="selectStatus" formControlName="isActive">
+                    <option [value]="false">Inactive</option>
+                    <option [value]="true" selected>Active</option>
                   </select>
+                  @if (f['isActive'].hasError('required') && f['isActive'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
                 </div>
               </div>
             </div>
           </div>
 
           <div class="card-footer mt-n4">
-            <button type="submit" id="btnCreateUserSubmit" class="btn btn-info btn-flat text-white">
+            <button type="submit" id="btnCreateUserSubmit" class="btn btn-info btn-flat text-white" [disabled]="userForm.invalid">
               Create
             </button>
             <a routerLink="/associate-data/users" class="btn btn-danger  btn-flat text-white"

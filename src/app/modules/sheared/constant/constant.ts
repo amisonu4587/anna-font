@@ -11,6 +11,8 @@ export const constants= {
       adminLogout:"Logout",
       role:"GetRoles",
       userList:"SearchUsers",
+      upsertUser:"UpsertUser",
+
 
 
 
