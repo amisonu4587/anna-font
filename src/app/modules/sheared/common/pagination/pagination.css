@@ -76,7 +76,7 @@
 ================================ */
 
 .page-btn:hover:not(:disabled) {
-  background-color: #3c8dbc;
+  background-color: #E51E2A;
   border-color: #adb5bd;
 }
 
@@ -86,8 +86,8 @@
 ================================ */
 
 .page-btn.active {
-  background-color: #3c8dbc;
-  border-color: #3c8dbc;
+  background-color: #E51E2A;
+  border-color: #E51E2A;
 
   color: #e9e6e6;
 }
