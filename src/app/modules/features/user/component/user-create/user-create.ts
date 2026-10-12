@@ -4,9 +4,10 @@ import { UserService } from '../../services/user-service';
 import { RoleResponse } from '../../../role/models/RoleResponse';
 import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
-  imports: [RouterLink,ReactiveFormsModule],
+  imports: [RouterLink,ReactiveFormsModule,NgxMaskDirective],
   selector: 'app-user-create',
   styleUrl: './user-create.css',
   templateUrl: './user-create.html',
