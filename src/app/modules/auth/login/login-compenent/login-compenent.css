@@ -17,7 +17,7 @@
 .login-card {
   border-radius: 10px;
   border: none;
-  border-top: 3px solid #022E5F;
+  border-top: 3px solid #E51E2A;
 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
@@ -25,7 +25,7 @@
 .card-header {
   background: #fff;
   border: none;
-  padding: 25px 0 0px;
+  padding: 40px 0 0px;
   border-radius: 10px 10px 0 0;
 }
 
@@ -34,8 +34,8 @@
 }
 
 .login-logo {
-  height: 100px;
-  width: 100px;
+  height: 93px;
+  width: 176px;
   object-fit: contain;
 }
 
@@ -110,7 +110,7 @@
 .btn-custom {
   height: 35px;
 
-  background: #255fa1;
+  background: #E51E2A;
   color: #fff;
 
   border: none;
@@ -120,7 +120,7 @@
 }
 
 .btn-custom:hover {
-  background: #034477;
+  background: #55565A;
   color: #fff;
 }
 

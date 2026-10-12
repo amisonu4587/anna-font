@@ -13,7 +13,7 @@ import { LoginResponse } from '../models/LoginResponse';
 })
 export class LoginCompenent {
 
-
+  loading = false;
 
   constructor(private loginser:LoginService,private router:Router,private toastr: ToastrService){}
 
@@ -25,6 +25,8 @@ export class LoginCompenent {
 
    Login(){
     console.log(this.login.value);
+
+     this.loading = true;
 
       this.loginser.loginSubmit(this.login.value).subscribe((res:LoginResponse)=>{
       // console.log(res);
