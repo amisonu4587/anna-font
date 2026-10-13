@@ -6,9 +6,9 @@ import { Pagination } from '../../../../sheared/common/pagination/pagination';
 import { NgClass } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { RoleResponse } from '../../../role/models/RoleResponse';
-
+import * as XLSX from 'xlsx-js-style';
 @Component({
-  imports: [RouterLink,Pagination,ReactiveFormsModule],
+  imports: [RouterLink, Pagination, ReactiveFormsModule],
   selector: 'app-user-list',
   styleUrl: './user-list.css',
   templateUrl: './user-list.html',
@@ -29,17 +29,18 @@ export class UserList {
   includeSuperAdmin = false;
 
   allRoles = signal<any[]>([]);
+  isExporting = signal(false);
 
 
 
 
-  constructor(private userSer:UserService,private router:Router,private toastr: ToastrService,private fb: FormBuilder){}
+  constructor(private userSer: UserService, private router: Router, private toastr: ToastrService, private fb: FormBuilder) { }
 
 
   ngOnInit(): void {
 
     this.includeSuperAdmin =
-    localStorage.getItem('role') === 'superadmin';
+      localStorage.getItem('role') === 'superadmin';
     this.filterForm = this.fb.group({
       name: [''],
       email: [''],
@@ -72,20 +73,20 @@ export class UserList {
       }
     };
 
-    this.userSer.userList(request).subscribe((res:any)=>{
-        if(res.isSuccess == true){
-          this.currentPage = res.result.currentPage;
-          this.totalData = res.result.totalRecords;
-          this.pageSize = res.result.recordsPerPage;
-          this.allUsers.set(res.result.userSearchResultDto);
-          // this.toastr.success(res.message);
-          this.loading.set(false);
+    this.userSer.userList(request).subscribe((res: any) => {
+      if (res.isSuccess == true) {
+        this.currentPage = res.result.currentPage;
+        this.totalData = res.result.totalRecords;
+        this.pageSize = res.result.recordsPerPage;
+        this.allUsers.set(res.result.userSearchResultDto);
+        // this.toastr.success(res.message);
+        this.loading.set(false);
 
-        }else{
-          this.toastr.error(res.message);
-          console.log(res.message);
-          this.loading.set(false);
-        }
+      } else {
+        this.toastr.error(res.message);
+        console.log(res.message);
+        this.loading.set(false);
+      }
 
     })
   }
@@ -111,27 +112,80 @@ export class UserList {
     console.log('Loading page:', page);
   }
 
-  clearFormData(){
+  clearFormData() {
     this.filterForm.reset();
   }
 
 
-   getRoles(): void {
-      this.userSer.getRole(this.includeSuperAdmin).subscribe({
-        next: (res: RoleResponse) => {
-          if(res.isSuccess == true){
-            this.allRoles.set(res.result ?? []);
-          }else{
-            this.toastr.success(res.message);
-          }
-        },
-        error: (err) => {
-          console.error('ROLE API ERROR:', err);
-          this.toastr.error('Unable to load roles');
+
+
+  getRoles(): void {
+    this.userSer.getRole(this.includeSuperAdmin).subscribe({
+      next: (res: RoleResponse) => {
+        if (res.isSuccess == true) {
+          this.allRoles.set(res.result ?? []);
+        } else {
+          this.toastr.success(res.message);
+        }
+      },
+      error: (err) => {
+        console.error('ROLE API ERROR:', err);
+        this.toastr.error('Unable to load roles');
+      }
+    });
+  }
+
+
+
+
+  exportToExcel(): void {
+    this.isExporting.set(true);
+
+    try {
+      const data = this.allUsers().map((user: any) => ({
+        Name: user.name,
+        Email: user.email,
+        Role: user.role,
+        CellPhone: user.cellPhone,
+        WorkPhone: user.workPhone,
+        Status: user.status,
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(data);
+
+      worksheet['!cols'] = [
+        { wch: 20 }, // Name
+        { wch: 30 }, // Email
+        { wch: 20 }, // Role
+        { wch: 18 }, // CellPhone
+        { wch: 18 }, // WorkPhone
+        { wch: 15 }, // Status
+      ];
+
+      // Make heading row bold
+      const headers = Object.keys(data[0] ?? {});
+
+      headers.forEach((header, index) => {
+        const cell = XLSX.utils.encode_cell({ r: 0, c: index });
+
+        if (worksheet[cell]) {
+          worksheet[cell].s = {
+            font: { bold: true },
+          };
         }
       });
-    }
 
+      const workbook = XLSX.utils.book_new();
+
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Users');
+
+      XLSX.writeFile(workbook, 'users.xlsx');
+    } catch (error) {
+      console.error('Excel export failed:', error);
+    } finally {
+      this.isExporting.set(false);
+    }
+  }
 
 
 

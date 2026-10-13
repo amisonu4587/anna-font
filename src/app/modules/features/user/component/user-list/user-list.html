@@ -4,7 +4,8 @@
       <div class="col-sm-6">
         <h1 class="d-inline">Users</h1>
         <a routerLink="/associate-data/users/create"
-          class="btn btn-sm btn-flat d-inline-block ml-2 mt-n2 elevation-2 text-white" style="background-color: #55565A;">Add New User</a>
+          class="btn btn-sm btn-flat d-inline-block ml-2 mt-n2 elevation-2 text-white"
+          style="background-color: #55565A;">Add New User</a>
       </div>
 
       <div class="col-sm-6">
@@ -56,70 +57,93 @@
           <!-- Actual Search Form -->
           <div class="row align-items-end">
 
-            <form [formGroup]="filterForm" (ngSubmit)="searchUsers()" class="row col-md-9 align-items-end g-2">
-             
-              <!-- Name -->
-              <div class="col-md-2 col-sm-12">
-                <label for="name">Name</label>
-                <input id="name" type="text" class="form-control form-control-sm rounded-0" formControlName="name"
-                  placeholder="Name" />
-              </div>
+            <div class="col-md-10">
 
-              <!-- Email -->
-              <div class="col-md-2 col-sm-12">
-                <label for="email">Email</label>
-                <input id="email" type="text" class="form-control form-control-sm rounded-0" formControlName="email"
-                  placeholder="Email" />
-              </div>
+              <form [formGroup]="filterForm" (ngSubmit)="searchUsers()" class="row col-md-9 align-items-end g-2">
 
-               <div class="col-md-2 col-sm-12">
-                <label for="status">Status</label>
-                <input id="status" type="text" class="form-control form-control-sm rounded-0" formControlName="status"
-                  placeholder="Status" />
-              </div>
+                <!-- Name -->
+                <div class="col-md-2 col-sm-12">
+                  <label for="name">Name</label>
+                  <input id="name" type="text" class="form-control form-control-sm rounded-0" formControlName="name"
+                    placeholder="Name" />
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-2 col-sm-12">
+                  <label for="email">Email</label>
+                  <input id="email" type="text" class="form-control form-control-sm rounded-0" formControlName="email"
+                    placeholder="Email" />
+                </div>
+
+                <div class="col-md-2 col-sm-12">
+                  <label for="status">Status</label>
+                  <input id="status" type="text" class="form-control form-control-sm rounded-0" formControlName="status"
+                    placeholder="Status" />
+                </div>
 
 
-              <div class="col-md-2 col-sm-12 ">
+                <div class="col-md-2 col-sm-12 ">
 
                   <label for="roleId">User Type</label>
                   <select class="form-control form-control-sm rounded-0" id="roleId" formControlName="roleId"
                     name="roleId" required="">
                     <option value="" selected>All</option>
-                      @for (role of allRoles(); track role.id; let i = $index) {
-                        <option value="{{role.id}}">{{role.name}}</option>
-                      }
+                    @for (role of allRoles(); track role.id; let i = $index) {
+                    <option value="{{role.id}}">{{role.name}}</option>
+                    }
 
                   </select>
-              </div>
+                </div>
 
-              <!-- Search -->
-              <div class="col-md-2 col-sm-12">
-                <button type="submit" class="btn  btn-sm text-white" style="background-color: #55565A;color: white;">
-                  Search
-                </button>
-              </div>
+                <!-- Search -->
+                <div class="col-md-1 col-sm-12">
+                  <button type="submit" class="btn  btn-sm text-white" style="background-color: #55565A;color: white;">
+                    Search
+                  </button>
+                </div>
 
-              <!-- Clear -->
-              <div class="col-md-2 col-sm-12">
-                <button class="btn btn-danger btn-sm text-white" (click)="clearFormData()">
-                  Clear
-                </button>
-              </div>
-            </form>
+                <!-- Clear -->
+                <div class="col-md-1 col-sm-12">
+                  <button class="btn btn-danger btn-sm text-white" (click)="clearFormData()">
+                    Clear
+                  </button>
+                </div>
 
-            <div class="col-md-3 col-sm-12 d-flex align-items-center gap-2 mt-2">
-              <label for="pageSize" class="mb-0">Show</label>
+                <div class="col-md-2 col-sm-12">
+                  <button class="btn btn-info btn-sm text-white" [disabled]="isExporting()" (click)="exportToExcel()">
+                   @if (isExporting()) {
+                      <span
+                        class="spinner-border spinner-border-sm me-2"
+                        aria-hidden="true"
+                      ></span>
+                      Exporting...
+                    } @else {
+                      Export
+                    }
+                  </button>
+                </div>
+              </form>
 
-              <select id="pageSize" class="form-select form-select-sm rounded-0" style="width: 80px" [value]="pageSize"
-                (change)="changePageSize($event)">
-                <option value="10" selected>10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-
-              <span>Entries</span>
             </div>
+
+
+            <div class="col-md-2">
+
+              <div class="col-md-1 col-sm-12 d-flex align-items-center gap-2 mt-2">
+                <label for="pageSize" class="mb-0">Show</label>
+
+                <select id="pageSize" class="form-select form-select-sm rounded-0" style="width: 80px"
+                  [value]="pageSize" (change)="changePageSize($event)">
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+
+                <span>Entries</span>
+              </div>
+            </div>
+
 
           </div>
           <!-- } -->
@@ -134,12 +158,12 @@
           <table class="table table-bordered table-striped table-sm shadow">
             <thead>
               <tr style="background-color: #55565A;color: white;">
-                <th ># SL No.</th>
-                <th >User Name</th>
-                <th >Email</th>
-                <th >User Type</th>
-                <th >Status</th>
-                <th >Action</th>
+                <th># SL No.</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>User Type</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
 
@@ -203,10 +227,10 @@
             style="text-align: center">
             <thead>
               <tr style="background-color: #55565A;color: white;">
-                <th ># SL No.</th>
-                <th >User Name</th>
-                <th >Email</th>
-                <th >User Type</th>
+                <th># SL No.</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>User Type</th>
 
                 <th class=" text-center">Status</th>
                 <th class=" text-center">Action</th>
@@ -222,12 +246,25 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.role }}</td>
                 <td class="text-center">
-                  <button type="button" class="btn btn-success btn-xs btn-flat">{{user.status}}</button>
+                  <!-- <button type="button" class="btn btn-success btn-xs btn-flat">{{user.status}}</button> -->
+                  @if (user.status === 'Active') {
+                  <span class="badge bg-success">Active</span>
+                  } @else {
+                  <span class="badge bg-danger">Inactive</span>
+                  }
                 </td>
                 <td class="text-center">
-                  <button class="btn btn-info btn-xs btn-flat text-white">
-                    Edit
+                  <!-- <button class="btn btn-outline-primary">
+                    <i class="fa fa-edit"></i>
                   </button>
+                  <button class="btn btn-outline-danger">
+                    <i class="fa fa-trash-o"></i>
+                  </button> -->
+
+                    <div class="btn-group mb-2" role="group" aria-label="Basic outlined example">
+                      <button type="button" class="btn btn-outline-secondary"><i class="fa fa-edit"></i></button>
+                      <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
                 </td>
               </tr>
               }
