@@ -1,0 +1,131 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2 mt-3">
+      <div class="col-sm-6">
+        <h1 class="d-inline">Update User</h1>
+
+      </div>
+
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <a routerLink="/dashboard">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a routerLink="/associate-data/users">Users</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a>Update Users</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="row m-2">
+    <div class="col-12">
+      <div class="card card-outline" style="border-top: 3px solid #022e5f">
+        <form method="post" enctype="multipart/form-data" id="frmCreateUser" [formGroup]="userForm" (ngSubmit)="submitUser()">
+
+          <div class="card-body">
+            <div class="row">
+              <input type="hidden" name="id" id="id" value="0" placeholder="" required="" />
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="roleId">User Type <span class="error">*</span></label>
+                  <select
+                      class="form-control form-control-sm text-sm rounded-0 text-capitalize"
+                      id="roleId"
+                      name="roleId"
+                      formControlName="roleId"
+                    >
+                      <option value="" disabled>Select User Type</option>
+
+                      @for (role of allRoles(); track role.id) {
+                        <option [value]="role.id">
+                          {{ role.name }}
+                        </option>
+                      }
+                    </select>
+
+                     @if (f['roleId'].hasError('required') && f['roleId'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
+
+
+
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="inputFName">Name <span class="error">*</span></label>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="name"
+                    id="name" value="" placeholder="Enter Name" required="" formControlName="name"/>
+
+                    @if (f['name'].hasError('required') && f['name'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="cellPhone">CellPhone</label>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="cellPhone" mask="(000) 000-0000"
+                    id="cellPhone" value="" placeholder="Enter cellPhone" required="" formControlName="cellphone"/>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="workPhone">WorkPhone</label>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="workPhone" mask="(000) 000-0000"
+                    id="workPhone" value="" placeholder="Enter workPhone" required="" formControlName="workPhone"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="email">Email <span class="error">*</span></label>
+                  <input type="" class="form-control form-control-sm text-sm rounded-0 scripts"
+                    name="email" id="email" value="" placeholder="Enter Email" formControlName="email"/>
+                    @if (f['email'].hasError('required') && f['email'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
+                </div>
+              </div>
+
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="password">Password </label>
+                  <input type="password" class="form-control form-control-sm text-sm rounded-0" id="password"
+                    name="password" placeholder="Password" value=""  autocomplete="new-password" formControlName="password"/>
+
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="card-footer mt-n4">
+            <button type="submit" id="btnCreateUserSubmit" class="btn btn-info btn-flat text-white" [disabled]="userForm.invalid">
+              Update
+            </button>
+            <a routerLink="/associate-data/users" class="btn btn-danger  btn-flat text-white"
+              style="margin-left: 5px;">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

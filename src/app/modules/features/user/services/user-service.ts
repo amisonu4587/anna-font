@@ -29,6 +29,10 @@ export class UserService {
     return this.httpser.postRequest(constants.backendUrl+constants.apiEndPiont.upsertUser,data);
   }
 
+  singleUserData(data:any,id:number):Observable<any>{
+    return this.httpser.getRequest(constants.backendUrl+constants.apiEndPiont.GetSingleUserData+'/'+id,data);
+  }
+
 
 
 

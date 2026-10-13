@@ -40,6 +40,8 @@ export class NavbarComponent {
 
    ngOnInit(): void {
 
+    console.log('Stored name:', localStorage.getItem('name'));
+
      this.name = localStorage.getItem('name') ?? '';
      this.roleName = localStorage.getItem('role') ?? '';
 

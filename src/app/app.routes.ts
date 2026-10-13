@@ -6,6 +6,7 @@ import { DashboardComponent } from './modules/features/dashboard/dashboard-compo
 import { RoleComponent } from './modules/features/role/role-component/role-component';
 import { UserList } from './modules/features/user/component/user-list/user-list';
 import { UserCreate } from './modules/features/user/component/user-create/user-create';
+import { UserUpdate } from './modules/features/user/component/user-update/user-update';
 
 export const routes: Routes = [
 
@@ -32,7 +33,9 @@ export const routes: Routes = [
             path: 'users',
             children: [
               { path: '', component: UserList },
-              { path: 'create', component: UserCreate }
+              { path: 'create', component: UserCreate },
+              { path: 'update/:id', component: UserUpdate }
+
             ]
           },
           {

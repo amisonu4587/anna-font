@@ -118,24 +118,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-
-
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group">
-                  <label for="selectStatus">Is Active <span class="error">*</span></label>
-                  <select class="form-control form-control-sm text-sm rounded-0" name="selectStatus" id="selectStatus" formControlName="isActive">
-                    <option [value]="false">Inactive</option>
-                    <option [value]="true" selected>Active</option>
-                  </select>
-                  @if (f['isActive'].hasError('required') && f['isActive'].touched) {
-                        <span class="error">
-                        This Field Is Required
-                        </span>
-                     }
-                </div>
-              </div>
-            </div>
+            
           </div>
 
           <div class="card-footer mt-n4">
