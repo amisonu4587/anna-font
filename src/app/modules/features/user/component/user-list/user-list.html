@@ -159,10 +159,28 @@
             <thead>
               <tr style="background-color: #55565A;color: white;">
                 <th># SL No.</th>
-                <th>User Name</th>
-                <th>Email</th>
-                <th>User Type</th>
-                <th>Status</th>
+                <th class="sortable" (click)="sortUsers('name')">
+                    Name
+                    <span class="sort-icons"></span>
+
+                  </th>
+
+                  <th class="sortable" (click)="sortUsers('email')">
+                    Email
+                    <span class="sort-icons"></span>
+
+                  </th>
+
+                  <th class="sortable" (click)="sortUsers('role')">
+                    Role
+                    <span class="sort-icons"></span>
+
+                  </th>
+
+                  <th class="sortable" (click)="sortUsers('status')">
+                    Status
+                    <span class="sort-icons"></span>
+                  </th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -225,17 +243,46 @@
 
           <table id="tabUserListView" class="table table-bordered table-striped table-sm shadow"
             style="text-align: center">
-            <thead>
-              <tr style="background-color: #55565A;color: white;">
-                <th># SL No.</th>
-                <th>User Name</th>
-                <th>Email</th>
-                <th>User Type</th>
+              
+              <thead>
+                <tr style="background-color: #55565A;color: white;">
+                  <th># SL No</th>
+                  <th class="sortable" (click)="sortUsers('name')">
+                    Name
+                    <span class="sort-icons"
+                      [class.asc]="sortingBy === 'name' && ascendingOrder"
+                      [class.desc]="sortingBy === 'name' && !ascendingOrder">
+                    </span>
+                  </th>
 
-                <th class=" text-center">Status</th>
-                <th class=" text-center">Action</th>
-              </tr>
-            </thead>
+                  <th class="sortable" (click)="sortUsers('email')">
+                    Email
+                    <span class="sort-icons"
+                      [class.asc]="sortingBy === 'email' && ascendingOrder"
+                      [class.desc]="sortingBy === 'email' && !ascendingOrder">
+                    </span>
+                  </th>
+
+                  <th class="sortable" (click)="sortUsers('role')">
+                    Role
+                    <span class="sort-icons"
+                      [class.asc]="sortingBy === 'role' && ascendingOrder"
+                      [class.desc]="sortingBy === 'role' && !ascendingOrder">
+                    </span>
+                  </th>
+
+                  <th class="sortable" (click)="sortUsers('status')">
+                    Status
+                    <span class="sort-icons"
+                      [class.asc]="sortingBy === 'status' && ascendingOrder"
+                      [class.desc]="sortingBy === 'status' && !ascendingOrder">
+                    </span>
+                  </th>
+
+                  <th>Action</th>
+                </tr>
+              </thead>
+
 
 
             <tbody>

@@ -187,6 +187,24 @@ export class UserList {
     }
   }
 
+  sortUsers(column: string): void {
+  if (this.sortingBy === column) {
+    // Toggle ascending / descending
+    console.log(column);
+
+
+    this.ascendingOrder = !this.ascendingOrder;
+  } else {
+    // New column starts with ascending order
+    this.sortingBy = column;
+    this.ascendingOrder = true;
+  }
+
+  this.currentPage = 1;
+  this.loading.set(true);
+  this.getUserList();
+}
+
 
 
 }

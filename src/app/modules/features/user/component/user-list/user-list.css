@@ -160,3 +160,59 @@
   }
 
 }
+
+
+th.sortable {
+  position: relative;
+  cursor: pointer;
+  padding-right: 25px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Header hover effect */
+/* th.sortable:hover {
+  background-color: #f5f5f5;
+} */
+
+/* Sorting arrows container */
+.sort-icons {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 18px;
+}
+
+/* Common arrow styles */
+.sort-icons::before,
+.sort-icons::after {
+  position: absolute;
+  left: 0;
+  font-size: 10px;
+  line-height: 10px;
+  color: #d6d6d6;
+}
+
+/* Ascending arrow */
+.sort-icons::before {
+  content: "▲";
+  top: 0;
+}
+
+/* Descending arrow */
+.sort-icons::after {
+  content: "▼";
+  bottom: 0;
+}
+
+/* Active ascending arrow */
+.sort-icons.asc::before {
+  color: #777;
+}
+
+/* Active descending arrow */
+.sort-icons.desc::after {
+  color: #777;
+}
