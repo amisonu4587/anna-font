@@ -77,8 +77,16 @@
 
                 <div class="col-md-2 col-sm-12">
                   <label for="status">Status</label>
-                  <input id="status" type="text" class="form-control form-control-sm rounded-0" formControlName="status"
-                    placeholder="Status" />
+
+                  <select class="form-control form-control-sm rounded-0" id="status" formControlName="status"
+                    name="status" required="">
+                    <option value="" selected>All</option>
+                    <option value="Active">Active</option>
+                    <option value="InActive">InActive</option>
+
+
+
+                  </select>
                 </div>
 
 
