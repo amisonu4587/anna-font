@@ -14,17 +14,32 @@
     <!-- User -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item mr-2 ml-2 mt-1">
-        <div class="row">
-          <div class="col-3">
-            <a href="javascript:void(0);">
-              <img src="/images/logo/smalll.png"
-                style="float:left;border-radius:50%;cursor:pointer" title="My Profile" height="35" width="40">
-            </a>
+        <a
+          routerLink="/profile"
+          class="text-decoration-none text-dark"
+          style="display: block; cursor: pointer;"
+        >
+          <div class="row align-items-center">
+            <div class="col-3">
+              <img
+                src="/images/logo/smalll.png"
+                alt="My Profile"
+                title="My Profile"
+                style="border-radius: 50%; cursor: pointer;"
+                height="35"
+                width="40"
+              />
+            </div>
+
+            <div class="col-9" style="padding-top: 3px;">
+              <span
+                style="font-weight: bold; font-size: 14px; padding-left: 8px; padding-right: 10px;color:white;"
+              >
+                {{ name }}
+              </span>
+            </div>
           </div>
-          <div class="col-9" style="padding-top:3px">
-            <span style="font-weight:bold;font-size:14px;padding-left:8px;padding-right:10px;cursor:pointer">{{name}}</span>
-          </div>
-        </div>
+        </a>
       </li>
 
 

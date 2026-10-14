@@ -1,0 +1,183 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2 mt-3">
+      <div class="col-sm-6">
+        <h1 class="d-inline">User profile</h1>
+
+      </div>
+
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <a routerLink="/dashboard">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a routerLink="/profile">User Profile</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a>Update Users</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="row m-2">
+    <div class="col-12">
+      <div class="card card-outline" style="border-top: 3px solid #E51E2A">
+        <form method="post" enctype="multipart/form-data" id="frmCreateUser" [formGroup]="userForm" (ngSubmit)="submitUser()">
+
+          <div class="card-body">
+            <!-- <div class="row mb-3">
+                <div class="col-12 text-right">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-danger rounded-0"
+                    (click)="resetPassword()"
+                  >
+                    <i class="fas fa-key mr-1"></i>
+                    Reset Password
+                  </button>
+                </div>
+            </div> -->
+            <div class="row">
+              <input type="hidden" name="id" id="id" value="0" placeholder="" required="" />
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="roleId">User Type </label>
+                  <select
+                      class="form-control form-control-sm text-sm rounded-0 text-capitalize"
+                      id="roleId"
+                      name="roleId"
+                      formControlName="roleId"
+                    >
+                      <option value="" disabled>Select User Type</option>
+
+                      @for (role of allRoles(); track role.id) {
+                        <option [value]="role.id">
+                          {{ role.name }}
+                        </option>
+                      }
+                    </select>
+
+                     @if (f['roleId'].hasError('required') && f['roleId'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
+
+
+
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="inputFName">Name </label>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="name"
+                    id="name" value="" placeholder="Enter Name" required="" formControlName="name"/>
+
+                    @if (f['name'].hasError('required') && f['name'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
+                </div>
+              </div>
+              <div class="col-md-2 col-sm-6 col-xs-12"></div>
+              <div class="col-md-2 col-sm-6 col-xs-12">
+
+                 <button
+                    type="button"
+                    class="btn btn-sm btn-danger rounded-0"
+                    data-toggle="modal"
+                    data-target="#resetPasswordModal"
+                  >
+                    <i class="fas fa-key mr-1"></i>
+                    Reset Password
+                  </button>
+
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="cellPhone">CellPhone</label>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="cellPhone" mask="(000) 000-0000"
+                    id="cellPhone" value="" placeholder="Enter cellPhone" required="" formControlName="cellphone"/>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="workPhone">WorkPhone</label>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="workPhone" mask="(000) 000-0000"
+                    id="workPhone" value="" placeholder="Enter workPhone" required="" formControlName="workPhone"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="email">Email </label>
+                  <input type="" class="form-control form-control-sm text-sm rounded-0 scripts"
+                    name="email" id="email" value="" placeholder="Enter Email" formControlName="email"/>
+                    @if (f['email'].hasError('required') && f['email'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>
+
+
+<div class="modal-body">
+  <form id="resetPasswordForm" autocomplete="on">
+
+    <div class="form-group">
+      <label for="newPassword">New Password</label>
+      <input
+        type="password"
+        id="newPassword"
+        name="newPassword"
+        class="form-control form-control-sm rounded-0"
+        placeholder="Enter new password"
+        autocomplete="new-password"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        class="form-control form-control-sm rounded-0"
+        placeholder="Confirm new password"
+        autocomplete="new-password"
+      />
+    </div>
+
+  </form>
+</div>
+
+
+
+

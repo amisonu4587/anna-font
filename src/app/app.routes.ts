@@ -7,6 +7,7 @@ import { RoleComponent } from './modules/features/role/role-component/role-compo
 import { UserList } from './modules/features/user/component/user-list/user-list';
 import { UserCreate } from './modules/features/user/component/user-create/user-create';
 import { UserUpdate } from './modules/features/user/component/user-update/user-update';
+import { ProfileComponent } from './modules/features/profile/component/profile-component/profile-component';
 
 export const routes: Routes = [
 
@@ -24,6 +25,11 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+
+      {
+        path: 'profile',
+        component: ProfileComponent
       },
 
       {

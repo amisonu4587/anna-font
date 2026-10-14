@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavbarService } from '../service/navbar-service';
 import { LogoutResponse } from '../models/NavBar';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from '@relynn/ngx-toastr';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-navbar-component',
   styleUrl: './navbar-component.css',
   templateUrl: './navbar-component.html',
