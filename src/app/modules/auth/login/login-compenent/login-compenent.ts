@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../service/login-service';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { LoginResponse } from '../models/LoginResponse';
 })
 export class LoginCompenent {
 
-  loading = false;
+  loading = signal(false);
 
   constructor(private loginser:LoginService,private router:Router,private toastr: ToastrService){}
 
@@ -26,8 +26,7 @@ export class LoginCompenent {
    Login(){
     console.log(this.login.value);
 
-     this.loading = true;
-
+     this.loading.set(true);
       this.loginser.loginSubmit(this.login.value).subscribe((res:LoginResponse)=>{
       // console.log(res);
       if (res.isSuccess === true) {
@@ -38,10 +37,17 @@ export class LoginCompenent {
         localStorage.setItem('userId', String(res.result.userId));
         localStorage.setItem('role', res.result.role);
         this.router.navigate(['/dashboard']);
+        this.loading.set(false);
+
+
       } else {
         // alert(res.message);
         this.toastr.error(res.message);
+        this.loading.set(false);
+
         this.router.navigate(['/login']);
+        console.log(this.loading);
+
       }
     })
   }

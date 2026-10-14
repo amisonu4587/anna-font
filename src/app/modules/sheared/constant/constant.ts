@@ -12,7 +12,9 @@ export const constants= {
       role:"GetRoles",
       userList:"SearchUsers",
       upsertUser:"UpsertUser",
-      GetSingleUserData:"GetUser",
+      getSingleUserData:"GetUser",
+      userStatusChange:"UserStatusChange",
+
 
 
 

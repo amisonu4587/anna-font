@@ -30,8 +30,12 @@ export class UserService {
   }
 
   singleUserData(data:any,id:number):Observable<any>{
-    return this.httpser.getRequest(constants.backendUrl+constants.apiEndPiont.GetSingleUserData+'/'+id,data);
+    return this.httpser.getRequest(constants.backendUrl+constants.apiEndPiont.getSingleUserData+'/'+id,data);
   }
+
+userStatusChange(data: any, id: number): Observable<any> {
+  return this.httpser.postRequest(constants.backendUrl + constants.apiEndPiont.userStatusChange + '/' + id + '?status=' + encodeURIComponent(data.status), {});
+}
 
 
 

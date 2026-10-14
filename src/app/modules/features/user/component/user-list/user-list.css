@@ -216,3 +216,9 @@ th.sortable {
 .sort-icons.desc::after {
   color: #777;
 }
+
+
+.btn {
+  cursor: pointer;
+  pointer-events: auto;
+}

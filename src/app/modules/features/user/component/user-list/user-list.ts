@@ -206,5 +206,27 @@ export class UserList {
 }
 
 
+  userStatusChange(id: number, status: string) {
+  console.log(id, status);
+
+  this.userSer.userStatusChange({ status: status }, id).subscribe({
+    next: (res: any) => {
+      if (res.isSuccess === true) {
+        this.toastr.success(res.message);
+        this.loading.set(true);
+
+        this.getUserList();
+      } else {
+        this.toastr.error(res.message);
+      }
+    },
+    error: (err) => {
+      console.error(err);
+      this.toastr.error('Unable to update user status');
+    }
+  });
+}
+
+
 
 }

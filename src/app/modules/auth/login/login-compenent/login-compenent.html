@@ -57,7 +57,7 @@
 
             <div class="col-md-5 col-sm-12">
               <button class="btn btn-custom btn-block btn-sm" type="submit" [disabled]="login.invalid">
-                 @if (loading) {
+                 @if (loading()) {
                     <span
                       class="spinner-border spinner-border-sm me-2"
                       aria-hidden="true">
