@@ -19,7 +19,7 @@ export class ProfileComponent {
   allRoles = signal<any[]>([]);
   includeSuperAdmin = false;
   userId!: number;
-
+ isModalOpen = false;
 
 
   constructor(
@@ -103,6 +103,15 @@ submitUser(){
 get f() {
   return this.userForm.controls;
 }
+
+
+openModal(): void {
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
 
 
 
