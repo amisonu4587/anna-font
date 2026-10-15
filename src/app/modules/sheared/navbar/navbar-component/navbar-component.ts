@@ -24,10 +24,10 @@ export class NavbarComponent {
         this.toastr.success(res.message);
 
 
-        localStorage.removeItem('token');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('name');
-        localStorage.removeItem('role');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('name');
+        sessionStorage.removeItem('role');
 
         this.router.navigate(['/login']);
 
@@ -40,10 +40,10 @@ export class NavbarComponent {
 
    ngOnInit(): void {
 
-    console.log('Stored name:', localStorage.getItem('name'));
+    console.log('Stored name:', sessionStorage.getItem('name'));
 
-     this.name = localStorage.getItem('name') ?? '';
-     this.roleName = localStorage.getItem('role') ?? '';
+     this.name = sessionStorage.getItem('name') ?? '';
+     this.roleName = sessionStorage.getItem('role') ?? '';
 
 
    }

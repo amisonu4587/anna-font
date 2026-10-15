@@ -32,10 +32,10 @@ export class LoginCompenent {
       if (res.isSuccess === true) {
         this.toastr.success(res.message);
 
-        localStorage.setItem('token', res.result.token);
-        localStorage.setItem('name', res.result.name);
-        localStorage.setItem('userId', String(res.result.userId));
-        localStorage.setItem('role', res.result.role);
+        sessionStorage.setItem('token', res.result.token);
+        sessionStorage.setItem('name', res.result.name);
+        sessionStorage.setItem('userId', String(res.result.userId));
+        sessionStorage.setItem('role', res.result.role);
         this.router.navigate(['/dashboard']);
         this.loading.set(false);
 

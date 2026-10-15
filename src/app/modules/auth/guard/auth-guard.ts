@@ -26,7 +26,7 @@ export const authGuard: CanActivateChildFn = (childRoute, state) => {
     return true;
   }
 
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   if (!token) {
     return router.createUrlTree(['/login']);
