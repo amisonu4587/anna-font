@@ -35,7 +35,7 @@ export class UserUpdate {
     this.userId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.includeSuperAdmin =
-      localStorage.getItem('role') === 'superadmin';
+      sessionStorage.getItem('role') === 'superadmin';
 
 
       this.userForm = this.fb.group({

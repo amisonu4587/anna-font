@@ -19,7 +19,7 @@ export class ProfileComponent {
   allRoles = signal<any[]>([]);
   includeSuperAdmin = false;
   userId!: number;
-  
+
 
 
   constructor(
@@ -33,10 +33,10 @@ export class ProfileComponent {
 
     ngOnInit(): void {
 
-    this.userId = Number(localStorage.getItem('userId')) || 0;
+    this.userId = Number(sessionStorage.getItem('userId')) || 0;
 
     this.includeSuperAdmin =
-      localStorage.getItem('role') === 'superadmin';
+      sessionStorage.getItem('role') === 'superadmin';
 
 
       this.userForm = this.fb.group({

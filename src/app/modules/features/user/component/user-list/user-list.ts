@@ -40,7 +40,7 @@ export class UserList {
   ngOnInit(): void {
 
     this.includeSuperAdmin =
-      localStorage.getItem('role') === 'superadmin';
+      sessionStorage.getItem('role') === 'superadmin';
     this.filterForm = this.fb.group({
       name: [''],
       email: [''],

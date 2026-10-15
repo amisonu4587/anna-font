@@ -28,7 +28,7 @@ export class RoleComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log('RoleComponent initialized');
-    this.includeSuperAdmin = localStorage.getItem('role') === 'superadmin';
+    this.includeSuperAdmin = sessionStorage.getItem('role') === 'superadmin';
     this.getRoles();
   }
 

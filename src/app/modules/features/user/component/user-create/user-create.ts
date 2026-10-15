@@ -33,7 +33,7 @@ export class UserCreate {
 
 
     this.includeSuperAdmin =
-      localStorage.getItem('role') === 'superadmin';
+      sessionStorage.getItem('role') === 'superadmin';
 
 
       this.userForm = this.fb.group({
