@@ -103,9 +103,7 @@
                   </button> -->
 
 
-                  <button type="button" class="btn-open" (click)="openModal()">
-  Open Modal
-</button>
+                  <button type="button" class="btn btn-sm btn-danger rounded-0btn-open" (click)="openModal()"><i class="fas fa-key mr-1"></i>Reset Password</button>
 
               </div>
 
@@ -163,18 +161,33 @@
   <div class="modal-overlay">
   <div class="modal-box">
 
-    <div class="modal-header">
-      <h3>My Modal</h3>
-      <button class="close-btn" (click)="closeModal()">×</button>
+    <div class="modal-header" style="background-color: #55565A;color: white;">
+      <h3 style="color: white;">Reset Password</h3>
+      <button class="modal-x-btn" (click)="closeModal()" >×</button>
     </div>
 
     <div class="modal-body">
       <p>Your modal content goes here.</p>
     </div>
 
+
     <div class="modal-footer">
-      <button class="btn-close" (click)="closeModal()">Close</button>
+      <button
+        type="button"
+        class="btn-save"
+        /* (click)="saveData()" */
+        >
+        Save
+      </button>
+
+      <button
+        type="button"
+        class="btn-cancel"
+        (click)="closeModal()">
+        Cancel
+      </button>
     </div>
+
 
   </div>
 </div>

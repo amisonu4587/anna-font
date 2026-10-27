@@ -81,7 +81,7 @@ getRoles(): void {
 
         this.router.navigate(['/associate-data/users']);
       } else {
-        this.toastr.success(res.message);
+        this.toastr.error(res.message);
       }
     })
   }

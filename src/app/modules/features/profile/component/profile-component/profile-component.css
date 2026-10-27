@@ -1,20 +1,22 @@
 
+/* Modal overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-
   background: rgba(0, 0, 0, 0.5);
-
   display: flex;
   justify-content: center;
-  align-items: center;
-
+  align-items: flex-start;
+  padding: 50px 15px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
   z-index: 99999;
 }
 
+/* Modal box */
 .modal-box {
   position: relative;
   width: 90%;
@@ -23,54 +25,182 @@
   background: #fff;
   border-radius: 6px;
   box-sizing: border-box;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
-.modal-header,
-.modal-footer {
+/* Modal header */
+.modal-header {
   padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 15px;
+  background: #f5f5f5;
   border-bottom: 1px solid #ddd;
 }
 
 .modal-header h3 {
   margin: 0;
   font-size: 20px;
+  line-height: 1.4;
+  color: #333;
 }
 
-.modal-body {
-  padding: 20px;
-}
-
-.modal-footer {
-  justify-content: flex-end;
-  border-top: 1px solid #ddd;
-  border-bottom: none;
-}
-
+/* Header close icon */
 .close-btn {
-  border: none;
-  background: none;
-  font-size: 28px;
-  cursor: pointer;
-}
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-.btn-open,
-.btn-close {
-  padding: 8px 16px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  padding: 0;
+  margin: 0;
   border: none;
   border-radius: 4px;
+
+  background: transparent;
+  color: #fff;
+
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+
   cursor: pointer;
+  box-sizing: border-box;
 }
 
-.btn-open {
-  background: #0d6efd;
-  color: white;
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
 
-.btn-close {
-  background: #6c757d;
-  color: white;
+.close-btn:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
 }
 
+/* Modal body */
+.modal-body {
+  padding: 20px;
+  color: #333;
+  background: #fff;
+}
+
+/* Modal footer */
+.modal-footer {
+  padding: 15px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+/* Same size for both buttons */
+.btn-save,
+.btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 65px;
+  min-width: 65px;
+  height: 38px;
+  min-height: 38px;
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  border: none;
+  border-radius: 4px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 1;
+
+  transition: background-color 0.2s ease;
+}
+
+/* Save button */
+.btn-save {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.btn-save:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-save:disabled {
+  background-color: #9bbcf5;
+  cursor: not-allowed;
+}
+
+/* Cancel button */
+.btn-cancel {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-cancel:hover {
+  background-color: #5c636a;
+}
+
+/* Keyboard focus */
+.btn-save:focus-visible,
+.btn-cancel:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+/* Mobile responsive */
+@media (max-width: 576px) {
+  .modal-overlay {
+    padding: 25px 12px 15px;
+  }
+
+  .modal-box {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .modal-header {
+    padding: 12px 15px;
+  }
+
+  .modal-header h3 {
+    font-size: 18px;
+  }
+
+  .modal-body {
+    padding: 15px;
+  }
+
+  .modal-footer {
+    padding: 12px 15px;
+    gap: 10px;
+  }
+
+  .btn-save,
+  .btn-cancel {
+    width: 65px;
+    min-width: 65px;
+    height: 38px;
+    min-height: 38px;
+    font-size: 14px;
+  }
+}

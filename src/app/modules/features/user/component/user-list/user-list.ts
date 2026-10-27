@@ -7,6 +7,7 @@ import { NgClass } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { RoleResponse } from '../../../role/models/RoleResponse';
 import * as XLSX from 'xlsx-js-style';
+import Swal from 'sweetalert2';
 @Component({
   imports: [RouterLink, Pagination, ReactiveFormsModule],
   selector: 'app-user-list',
@@ -206,23 +207,59 @@ export class UserList {
 }
 
 
-  userStatusChange(id: number, status: string) {
-  console.log(id, status);
+//   userStatusChange(id: number, status: string) {
+//   console.log(id, status);
 
-  this.userSer.userStatusChange({ status: status }, id).subscribe({
-    next: (res: any) => {
-      if (res.isSuccess === true) {
-        this.toastr.success(res.message);
-        this.loading.set(true);
+//   this.userSer.userStatusChange({ status: status }, id).subscribe({
+//     next: (res: any) => {
+//       if (res.isSuccess === true) {
+//         this.toastr.success(res.message);
+//         this.loading.set(true);
 
-        this.getUserList();
-      } else {
-        this.toastr.error(res.message);
-      }
-    },
-    error: (err) => {
-      console.error(err);
-      this.toastr.error('Unable to update user status');
+//         this.getUserList();
+//       } else {
+//         this.toastr.error(res.message);
+//       }
+//     },
+//     error: (err) => {
+//       console.error(err);
+//       this.toastr.error('Unable to update user status');
+//     }
+//   });
+// }
+
+
+userStatusChange(id: number, status: string) {
+  const newStatus = status === 'Active' ? 'Inactive' : 'Active';
+
+  Swal.fire({
+    title: 'Are you sure?',
+    text: `Do you want to change this user status to ${newStatus}?`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: newStatus === 'Inactive' ? '#dc3545' : '#198754',
+    cancelButtonColor: '#6c757d',
+    confirmButtonText: `Yes, ${newStatus}`,
+    cancelButtonText: 'Cancel',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.userSer.userStatusChange({ status: status }, id).subscribe({
+        next: (res: any) => {
+          if (res.isSuccess === true) {
+            this.toastr.success(res.message);
+            this.loading.set(true);
+
+            this.getUserList();
+          } else {
+            this.toastr.error(res.message);
+          }
+        },
+        error: (err) => {
+          console.error(err);
+          this.toastr.error('Unable to update user status');
+        }
+      });
     }
   });
 }
