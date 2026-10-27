@@ -317,9 +317,10 @@
                   </button> -->
 
                     <div class="btn-group mb-2" role="group" aria-label="Basic outlined example">
-                      <a href="/associate-data/users/update/{{user.id}}" class="btn btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
 
                      @if (user.status === 'Active') {
+                      <a routerLink="/associate-data/users/update/{{user.id}}" class="btn btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
+
                         <button
                           type="button"
                           class="btn btn-outline-danger"
