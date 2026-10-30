@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
 import { ProfileService } from '../../services/profile-service';
@@ -16,10 +16,11 @@ import { disabled } from '@angular/forms/signals';
 export class ProfileComponent {
 
   userForm!: FormGroup;
+  resetForm!:FormGroup;
   allRoles = signal<any[]>([]);
   includeSuperAdmin = false;
   userId!: number;
- isModalOpen = false;
+  isModalOpen = false;
 
 
   constructor(
@@ -48,10 +49,36 @@ export class ProfileComponent {
         email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
       });
 
+
+      this.resetForm = this.fb.group({
+        id: [{ value: sessionStorage.getItem('id'), disabled: true }],
+        oldPassword: ['', Validators.required],
+        newPassword: ['', Validators.required],
+        confirmPassword: ['', Validators.required]
+      }, {
+        validators: this.passwordMatchValidator
+      });
+
+
     this.getRoles();
     this.getSingleData();
 
 
+  }
+
+
+
+  passwordMatchValidator(form: AbstractControl): ValidationErrors | null {
+    const newPassword = form.get('newPassword')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+
+    if (!confirmPassword) {
+      return null;
+    }
+
+    return newPassword === confirmPassword
+      ? null
+      : { passwordMismatch: true };
   }
 
   getRoles(): void {

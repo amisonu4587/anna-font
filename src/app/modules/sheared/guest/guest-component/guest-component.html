@@ -1,0 +1,45 @@
+<div >
+
+        <header id="head">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                    <img src="/images/logo/smalll.png" style="height:35px; width:55px"  />
+                            </div>
+                            <div class="col-auto mt-1">
+                                    <h5 style="color:#00050a;font-weight:bold"><span style="color: #E51E2A;">engage</span><span style="color:#55565A">core</span></h5>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col text-right">
+                                    <a type="button" id="SignInBtn" class="btn btn-sm btn-custom px-3" routerLink="/login">Sign In</a>
+
+                            </div>
+                        </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid" id="bdy">
+
+
+            <div id="loading-wrapper" style="display: none;">
+                <!-- <div id="loading-text"><img src="/images/logo/anna-logo.png" alt="Chesprocott" class="img-circle" style="max-width:70px;max-height: 70px"></div> -->
+                <div id="loading-content"><i class="fas fa-spinner fa-pulse" {{-- style="color:#00050a; font-size:160px" --}}
+                    style="color: #3c8dbc; font-size:160px"></i>
+                </div>
+            </div>
+            <main role="main" class="pb-3">
+               <router-outlet></router-outlet>
+            </main>
+
+        </div>
+        <footer class="text-muted fixed-bottom bg-white border-top box-shadow" id="foot" >
+            <div style="padding-left:10px;margin-bottom:5px">
+                <strong>Copyright &copy; <a style="color:#E51E2A" routerLink=""><span style="color: #E51E2A;">engage</span><span style="color:#55565A">core</span></a></strong>
+                All rights reserved.
+            </div>
+
+        </footer>
+    </div>

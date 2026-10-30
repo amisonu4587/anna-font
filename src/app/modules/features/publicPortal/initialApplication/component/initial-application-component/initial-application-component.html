@@ -1,0 +1,86 @@
+<main role="main" class="pb-3">
+  <div class="container text-sm windows">
+    <div class="text-center">
+      <img src="/images/logo/smalll.png" style="height: 70px;width: 107px;">
+      <h2 style="color:#00050a"><span style="color: #E51E2A;">engage</span><span style="color:#55565A">core</span></h2>
+      <h5 style="color:#00050a">688 East Main St, Branford, CT 06405</h5>
+    </div>
+    <br>
+
+    <section class="content">
+      <div class="col-12">
+        <div class="card card-outline" style="border-top:3px solid #E51E2A">
+          <div class="card-header text-white">
+            <h5 class="card-title" id="exampleModalLabel" style="color:#00050a">Apply For License</h5>
+          </div>
+          <div class="card-body">
+            <form id="applicationForm">
+              <div class="row">
+                <div class="col-md-2">
+                  <label style="font-weight:600" class="col-form-label">Application For <span
+                      style="font-size: 20px ;color:red">*</span></label>
+                  <select class="custom-select rounded-1 shadow mb-3 text-sm" id="application_for_id"
+                    name="application_for_id">
+                    <option disabled="" selected="">---Select---</option>
+                    <option value="1">Restaurant / Retail Food New</option>
+                    <option value="2">Mobile Food New</option>
+                    <option value="3">Temporary Food</option>
+                    <option value="4">Cosmetology/Body Care Permit</option>
+                    <option value="6">Pool Permit</option>
+                    <option value="8">Farmers Market Permit</option>
+                    <option value="9">Hotel/Motel Permit</option>
+                  </select>
+                  <span id="applicationError" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                  <label style="font-weight:600" class="col-form-label">Applicant First Name <span
+                      style="font-size: 20px ;color:red">*</span></label>
+                  <input type="text" class="form-control shadow mb-3 text-sm" name="firstName" id="firstName"
+                    placeholder="Applicant First Name">
+                  <span id="firstNameError" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="font-weight:600" class="col-form-label">Applicant Last Name <span
+                      style="font-size: 20px ;color:red">*</span></label>
+                  <input type="text" class="form-control shadow mb-3 text-sm" name="lastName" id="lastName"
+                    placeholder="Applicant Last Name">
+                  <span id="lastNameError" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-2">
+                  <label style="font-weight:600" class="col-form-label">Email<span
+                      style="font-size: 20px ;color:red">*</span></label>
+                  <input type="text" class="form-control shadow mb-3 text-sm" name="emailId" id="emailId"
+                    placeholder="Email">
+                  <span id="emailError" class="text-danger"></span>
+                </div>
+                <div class="col-md-2">
+                  <label style="font-weight:600" class="col-form-label">Contact Number <span
+                      style="font-size: 20px ;color:red">*</span></label>
+                  <input type="text" class="form-control shadow mb-3 text-sm" name="contactNumber" id="contactNumber" mask="(000) 000-0000"
+                    placeholder="Contact Number" inputmode="text">
+                  <span id="contactError" class="text-danger"></span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-sm btn-custom float-right" onclick="getApplication()" id="applybtn">
+              Get Application Link</button>
+            <button type="button" style="visibility:hidden" class="float-right"> .</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 text-center" style="color: #00050a">
+        For potential applicants without email, please apply in person at the Engagecore, 688
+        East Main St, Branford, CT 06405<br><br>
+        After clicking “Get Application Link”, an email will be sent to you. Since this is from a new email address, it
+        might be blocked or flagged. As needed, please check your Spam folder and mark it as “Not Spam”, and click
+        “Trust Sender” or take similar actions to access the email and avoid missing future updates.
+
+      </div>
+    </section>
+  </div>
+</main>

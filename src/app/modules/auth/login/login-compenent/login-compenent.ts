@@ -36,7 +36,9 @@ export class LoginCompenent {
         sessionStorage.setItem('name', res.result.name);
         sessionStorage.setItem('userId', String(res.result.userId));
         sessionStorage.setItem('role', res.result.role);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard']).then(() => {
+          window.location.reload();
+        });
         this.loading.set(false);
 
 

@@ -157,42 +157,123 @@
 
 <!-- Modal -->
 
-@if(isModalOpen){
+
+@if (isModalOpen) {
   <div class="modal-overlay">
-  <div class="modal-box">
+    <div class="modal-box">
 
-    <div class="modal-header" style="background-color: #55565A;color: white;">
-      <h3 style="color: white;">Reset Password</h3>
-      <button class="modal-x-btn" (click)="closeModal()" >×</button>
+      <!-- Header -->
+      <div class="modal-header" style="background-color: #55565A; color: white;">
+        <h3 style="color: white;">Reset Password</h3>
+
+        <button
+          type="button"
+          class="modal-x-btn"
+          (click)="closeModal()">
+          ×
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <form
+          id="frmCreateUser"
+          [formGroup]="resetForm"
+          (ngSubmit)="submitUser()">
+
+          <!-- Old Password -->
+          <div class="form-group">
+            <label for="oldPassword">
+              Old Password <span class="error">*</span>
+            </label>
+
+            <input
+              type="password"
+              class="form-control form-control-sm text-sm rounded-0"
+              id="oldPassword"
+              placeholder="Old Password"
+              formControlName="oldPassword"
+              autocomplete="current-password" />
+
+            @if (f['oldPassword'].hasError('required') && f['oldPassword'].touched) {
+              <span class="error">This Field Is Required</span>
+            }
+          </div>
+
+          <!-- New Password -->
+          <div class="form-group">
+            <label for="newPassword">
+              New Password <span class="error">*</span>
+            </label>
+
+            <input
+              type="password"
+              class="form-control form-control-sm text-sm rounded-0"
+              id="newPassword"
+              placeholder="New Password"
+              formControlName="newPassword"
+              autocomplete="new-password" />
+
+            @if (f['newPassword'].hasError('required') && f['newPassword'].touched) {
+              <span class="error">This Field Is Required</span>
+            }
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label for="confirmPassword">
+              Confirm Password <span class="error">*</span>
+            </label>
+
+            <input
+              type="password"
+              class="form-control form-control-sm text-sm rounded-0"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              formControlName="confirmPassword"
+              autocomplete="new-password" />
+
+            @if (f['confirmPassword'].hasError('required') && f['confirmPassword'].touched) {
+              <span class="error">This Field Is Required</span>
+            }
+
+            @if (
+              resetForm.hasError('passwordMismatch') &&
+              f['confirmPassword'].touched &&
+              f['confirmPassword'].value
+            ) {
+              <span class="error">
+                New Password and Confirm Password do not match.
+              </span>
+            }
+          </div>
+
+        </form>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button
+          type="submit"
+          form="frmCreateUser"
+          class="btn-save">
+          Save
+        </button>
+
+        <button
+          type="button"
+          class="btn-cancel"
+          (click)="closeModal()">
+          Cancel
+        </button>
+      </div>
+
     </div>
-
-    <div class="modal-body">
-      <p>Your modal content goes here.</p>
-    </div>
-
-
-    <div class="modal-footer">
-      <button
-        type="button"
-        class="btn-save"
-        /* (click)="saveData()" */
-        >
-        Save
-      </button>
-
-      <button
-        type="button"
-        class="btn-cancel"
-        (click)="closeModal()">
-        Cancel
-      </button>
-    </div>
-
-
   </div>
-</div>
-
 }
+
 
 
 

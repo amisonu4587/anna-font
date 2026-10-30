@@ -29,7 +29,7 @@ export class NavbarComponent {
         sessionStorage.removeItem('name');
         sessionStorage.removeItem('role');
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/application/online-application']);
 
       }else{
         this.toastr.success(res.message);
