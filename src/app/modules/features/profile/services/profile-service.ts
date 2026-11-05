@@ -25,6 +25,11 @@ export class ProfileService {
   }
 
 
+  resetPassword(data:any):Observable<any>{
+    return this.httpser.postRequest(constants.backendUrl+constants.apiEndPiont.resetPassword,data);
+  }
+
+
 
 
 }

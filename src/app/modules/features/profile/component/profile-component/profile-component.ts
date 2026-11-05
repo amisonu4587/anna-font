@@ -51,7 +51,7 @@ export class ProfileComponent {
 
 
       this.resetForm = this.fb.group({
-        id: [{ value: sessionStorage.getItem('id'), disabled: true }],
+        id: [sessionStorage.getItem('userId') ?? ''],
         oldPassword: ['', Validators.required],
         newPassword: ['', Validators.required],
         confirmPassword: ['', Validators.required]
@@ -71,6 +71,8 @@ export class ProfileComponent {
   passwordMatchValidator(form: AbstractControl): ValidationErrors | null {
     const newPassword = form.get('newPassword')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
+
+    console.log(newPassword,newPassword);
 
     if (!confirmPassword) {
       return null;
@@ -122,7 +124,25 @@ getSingleData(): void {
 }
 
 
-submitUser(){
+submitResetPassword(){
+
+  console.log(this.resetForm.value);
+
+  this.profileser.resetPassword(this.resetForm.value).subscribe((res:any)=>{
+    console.log(res);
+
+    if(res.isSuccess){
+        this.toastr.success(res.message);
+          sessionStorage.removeItem('token');
+          sessionStorage.removeItem('userId');
+          sessionStorage.removeItem('name');
+          sessionStorage.removeItem('role');
+
+          this.router.navigate(['/login']);
+    }else{
+        this.toastr.error(res.message);
+    }
+  })
 
 }
 
@@ -133,12 +153,12 @@ get f() {
 
 
 openModal(): void {
-    this.isModalOpen = true;
-  }
+  this.isModalOpen = true;
+}
 
-  closeModal(): void {
-    this.isModalOpen = false;
-  }
+closeModal(): void {
+  this.isModalOpen = false;
+}
 
 
 

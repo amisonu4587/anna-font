@@ -14,6 +14,8 @@ export const constants= {
       upsertUser:"UpsertUser",
       getSingleUserData:"GetUser",
       userStatusChange:"UserStatusChange",
+      resetPassword:"ResetPassword",
+      
 
 
 

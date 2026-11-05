@@ -27,7 +27,7 @@
   <div class="row m-2">
     <div class="col-12">
       <div class="card card-outline" style="border-top: 3px solid #E51E2A">
-        <form method="post" enctype="multipart/form-data" id="frmCreateUser" [formGroup]="userForm" (ngSubmit)="submitUser()">
+        <form method="post" enctype="multipart/form-data" id="frmCreateUser" [formGroup]="userForm">
 
           <div class="card-body">
             <!-- <div class="row mb-3">
@@ -51,26 +51,22 @@
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label for="roleId">User Type </label>
-                  <select
-                      class="form-control form-control-sm text-sm rounded-0 text-capitalize"
-                      id="roleId"
-                      name="roleId"
-                      formControlName="roleId"
-                    >
-                      <option value="" disabled>Select User Type</option>
+                  <select class="form-control form-control-sm text-sm rounded-0 text-capitalize" id="roleId"
+                    name="roleId" formControlName="roleId">
+                    <option value="" disabled>Select User Type</option>
 
-                      @for (role of allRoles(); track role.id) {
-                        <option [value]="role.id">
-                          {{ role.name }}
-                        </option>
-                      }
-                    </select>
+                    @for (role of allRoles(); track role.id) {
+                    <option [value]="role.id">
+                      {{ role.name }}
+                    </option>
+                    }
+                  </select>
 
-                     @if (f['roleId'].hasError('required') && f['roleId'].touched) {
-                        <span class="error">
-                        This Field Is Required
-                        </span>
-                     }
+                  @if (f['roleId'].hasError('required') && f['roleId'].touched) {
+                  <span class="error">
+                    This Field Is Required
+                  </span>
+                  }
 
 
 
@@ -79,20 +75,20 @@
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label for="inputFName">Name </label>
-                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="name"
-                    id="name" value="" placeholder="Enter Name" required="" formControlName="name"/>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="name" id="name"
+                    value="" placeholder="Enter Name" required="" formControlName="name" />
 
-                    @if (f['name'].hasError('required') && f['name'].touched) {
-                        <span class="error">
-                        This Field Is Required
-                        </span>
-                     }
+                  @if (f['name'].hasError('required') && f['name'].touched) {
+                  <span class="error">
+                    This Field Is Required
+                  </span>
+                  }
                 </div>
               </div>
               <div class="col-md-2 col-sm-6 col-xs-12"></div>
               <div class="col-md-2 col-sm-6 col-xs-12">
 
-                 <!-- <button
+                <!-- <button
                     type="button"
                     class="btn btn-sm btn-danger rounded-0"
                     data-toggle="modal"
@@ -103,7 +99,8 @@
                   </button> -->
 
 
-                  <button type="button" class="btn btn-sm btn-danger rounded-0btn-open" (click)="openModal()"><i class="fas fa-key mr-1"></i>Reset Password</button>
+                <button type="button" class="btn btn-sm btn-danger rounded-0btn-open" (click)="openModal()"><i
+                    class="fas fa-key mr-1"></i>Reset Password</button>
 
               </div>
 
@@ -113,15 +110,17 @@
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label for="cellPhone">CellPhone</label>
-                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="cellPhone" mask="(000) 000-0000"
-                    id="cellPhone" value="" placeholder="Enter cellPhone" required="" formControlName="cellphone"/>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="cellPhone"
+                    mask="(000) 000-0000" id="cellPhone" value="" placeholder="Enter cellPhone" required=""
+                    formControlName="cellphone" />
                 </div>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label for="workPhone">WorkPhone</label>
-                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="workPhone" mask="(000) 000-0000"
-                    id="workPhone" value="" placeholder="Enter workPhone" required="" formControlName="workPhone"/>
+                  <input type="text" class="form-control form-control-sm text-sm rounded-0" name="workPhone"
+                    mask="(000) 000-0000" id="workPhone" value="" placeholder="Enter workPhone" required=""
+                    formControlName="workPhone" />
                 </div>
               </div>
             </div>
@@ -129,13 +128,13 @@
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label for="email">Email </label>
-                  <input type="" class="form-control form-control-sm text-sm rounded-0 scripts"
-                    name="email" id="email" value="" placeholder="Enter Email" formControlName="email"/>
-                    @if (f['email'].hasError('required') && f['email'].touched) {
-                        <span class="error">
-                        This Field Is Required
-                        </span>
-                     }
+                  <input type="" class="form-control form-control-sm text-sm rounded-0 scripts" name="email" id="email"
+                    value="" placeholder="Enter Email" formControlName="email" />
+                  @if (f['email'].hasError('required') && f['email'].touched) {
+                  <span class="error">
+                    This Field Is Required
+                  </span>
+                  }
                 </div>
               </div>
 
@@ -158,6 +157,8 @@
 <!-- Modal -->
 
 
+
+
 @if (isModalOpen) {
   <div class="modal-overlay">
     <div class="modal-box">
@@ -166,21 +167,20 @@
       <div class="modal-header" style="background-color: #55565A; color: white;">
         <h3 style="color: white;">Reset Password</h3>
 
-        <button
-          type="button"
-          class="modal-x-btn"
-          (click)="closeModal()">
+        <button type="button" class="modal-x-btn" (click)="closeModal()">
           ×
         </button>
       </div>
 
-      <!-- Body -->
-      <div class="modal-body">
+      <form
+        id="frmCreateUser"
+        [formGroup]="resetForm"
+        (ngSubmit)="submitResetPassword()">
 
-        <form
-          id="frmCreateUser"
-          [formGroup]="resetForm"
-          (ngSubmit)="submitUser()">
+        <!-- Body -->
+        <div class="modal-body">
+
+          <input type="hidden" formControlName="id" />
 
           <!-- Old Password -->
           <div class="form-group">
@@ -196,7 +196,8 @@
               formControlName="oldPassword"
               autocomplete="current-password" />
 
-            @if (f['oldPassword'].hasError('required') && f['oldPassword'].touched) {
+            @if (resetForm.get('oldPassword')?.hasError('required') &&
+                 resetForm.get('oldPassword')?.touched) {
               <span class="error">This Field Is Required</span>
             }
           </div>
@@ -215,7 +216,8 @@
               formControlName="newPassword"
               autocomplete="new-password" />
 
-            @if (f['newPassword'].hasError('required') && f['newPassword'].touched) {
+            @if (resetForm.get('newPassword')?.hasError('required') &&
+                 resetForm.get('newPassword')?.touched) {
               <span class="error">This Field Is Required</span>
             }
           </div>
@@ -234,48 +236,41 @@
               formControlName="confirmPassword"
               autocomplete="new-password" />
 
-            @if (f['confirmPassword'].hasError('required') && f['confirmPassword'].touched) {
+            @if (resetForm.get('confirmPassword')?.hasError('required') &&
+                 resetForm.get('confirmPassword')?.touched) {
               <span class="error">This Field Is Required</span>
             }
 
-            @if (
-              resetForm.hasError('passwordMismatch') &&
-              f['confirmPassword'].touched &&
-              f['confirmPassword'].value
-            ) {
+            @if (resetForm.hasError('passwordMismatch') &&
+                 resetForm.get('confirmPassword')?.touched &&
+                 resetForm.get('confirmPassword')?.value) {
               <span class="error">
                 New Password and Confirm Password do not match.
               </span>
             }
           </div>
 
-        </form>
+        </div>
 
-      </div>
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn-save"
+            [disabled]="resetForm.invalid">
+            Save
+          </button>
 
-      <!-- Footer -->
-      <div class="modal-footer">
-        <button
-          type="submit"
-          form="frmCreateUser"
-          class="btn-save">
-          Save
-        </button>
+          <button
+            type="button"
+            class="btn-cancel"
+            (click)="closeModal()">
+            Cancel
+          </button>
+        </div>
 
-        <button
-          type="button"
-          class="btn-cancel"
-          (click)="closeModal()">
-          Cancel
-        </button>
-      </div>
+      </form>
 
     </div>
   </div>
 }
-
-
-
-
-
-
