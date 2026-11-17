@@ -7,6 +7,8 @@ export const constants= {
 
     apiEndPiont:{
 
+      applicationFor: "GetApplicationFors",
+
       adminLogin:"Login",
       adminLogout:"Logout",
       role:"GetRoles",
@@ -15,7 +17,7 @@ export const constants= {
       getSingleUserData:"GetUser",
       userStatusChange:"UserStatusChange",
       resetPassword:"ResetPassword",
-      
+
 
 
 

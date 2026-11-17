@@ -14,6 +14,7 @@ import { LoginResponse } from '../models/LoginResponse';
 export class LoginCompenent {
 
   loading = signal(false);
+  showPassword: boolean = false;
 
   constructor(private loginser:LoginService,private router:Router,private toastr: ToastrService){}
 

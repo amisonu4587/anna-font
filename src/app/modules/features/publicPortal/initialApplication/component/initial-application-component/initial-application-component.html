@@ -22,13 +22,11 @@
                   <select class="custom-select rounded-1 shadow mb-3 text-sm" id="application_for_id"
                     name="application_for_id">
                     <option disabled="" selected="">---Select---</option>
-                    <option value="1">Restaurant / Retail Food New</option>
-                    <option value="2">Mobile Food New</option>
-                    <option value="3">Temporary Food</option>
-                    <option value="4">Cosmetology/Body Care Permit</option>
-                    <option value="6">Pool Permit</option>
-                    <option value="8">Farmers Market Permit</option>
-                    <option value="9">Hotel/Motel Permit</option>
+
+                       @for (appFor of allApplicationFor(); track appFor.id; let i = $index) {
+                          <option value="{{appFor.id}}">{{appFor.name}}</option>
+                       }
+                    
                   </select>
                   <span id="applicationError" class="text-danger"></span>
                 </div>
