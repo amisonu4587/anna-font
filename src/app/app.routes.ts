@@ -10,6 +10,9 @@ import { UserUpdate } from './modules/features/user/component/user-update/user-u
 import { ProfileComponent } from './modules/features/profile/component/profile-component/profile-component';
 import { GuestComponent } from './modules/sheared/guest/guest-component/guest-component';
 import { InitialApplicationComponent } from './modules/features/publicPortal/initialApplication/component/initial-application-component/initial-application-component';
+import { VerificationComponent } from './modules/features/publicPortal/verification/component/verification-component/verification-component';
+import { ErrorPageComponent } from './modules/sheared/errorPage/component/error-page-component/error-page-component';
+import { ApplicationMasterComponent } from './modules/features/publicPortal/applicationMaster/component/application-master-component/application-master-component';
 
 export const routes: Routes = [
 
@@ -30,6 +33,14 @@ export const routes: Routes = [
       {
         path: 'online-application',
         component: InitialApplicationComponent
+      },
+      {
+        path: 'verification/:id',
+        component: VerificationComponent
+      },
+      {
+        path: 'online-permit-application/:code/:typeId/:id',
+        component: ApplicationMasterComponent
       }
     ]
   },
@@ -81,10 +92,10 @@ export const routes: Routes = [
     ]
   },
 
-  // {
-  //   path: '**',
-  //   redirectTo: 'login'
-  // }
+  {
+    path: '**',
+    component: ErrorPageComponent
+  }
 
 
 
