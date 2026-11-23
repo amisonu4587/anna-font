@@ -8,6 +8,9 @@ export const constants= {
     apiEndPiont:{
 
       applicationFor: "GetApplicationFors",
+      createInitialApplication:"api/Application/CreateApplication",
+      verifyInitialApplication:"api/Application/Verification",
+
 
       adminLogin:"Login",
       adminLogout:"Logout",

@@ -1,530 +1,148 @@
-
-<form id="permitApplicationForm" method="POST" enctype="multipart/form-data"
-    action="">
-    <input type="hidden" name="application_type" id="application_type" value="online">
-    <input type="hidden" name="initial_applications" id="initial_applications" value="">
-    <div class="card-header" style="background-color: #022E5F;">
-        <h5 style="color:white">
-            Restaurant/Retail Food Permit Application <span class="text-warning"></span>
-        </h5>
-    </div>
-
+<form id="permitApplicationForm" enctype="multipart/form-data">
+  <input type="hidden" name="application_type" id="application_type" value="online" formControlName="application_type">
+  <input type="hidden" name="initial_applications" id="initial_applications" value=""
+    formControlName="initial_applications">
+  <div class="card-header" style="background-color: #787a7c;">
+    <h5 style="color:white">
+      Restaurant/Retail Food Permit Application <span class="text-warning"></span>
+    </h5>
+  </div>
 
 
+
+
+
+
+  <div class="card card-danger card-outline mb-4">
     <div class="card-header">
-        <h5 style="color:#022E5F;">Basic Details</h5>
+      <div class="card-title">Basic Details</div>
     </div>
     <div class="card-body">
 
+      <div class="row">
+        <div class="col-sm-2 form-group">
+          <label class="col-form-label text-sm text-secondary">
+            APPLICATION DATE <span class="text-danger">&#42;</span>
+          </label>
 
+          <input
+            #applicationDate
+            type="date"
+            class="form-control form-control-sm shadow mb-2 required"
+            id="application_date"
+            name="application_date"
+            formControlName="application_date"
+            (click)="openDatePicker(applicationDate)"
+          />
 
-
-        <div class="row">
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary"> APPLICATION DATE <span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="application_date"
-                    name="application_date" value="" placeholder="APPLICATION DATE" readonly />
-                <span id="application_date_error" class="error text-danger"></span>
-            </div>
-            <div class="col-sm-2 form-group">
-                <label class="col-form-label text-sm text-secondary">APPLICATION FOR <span
-                        class="text-danger">&#42;</span></label>
-                <select id="application_type_id" name="application_type_id"
-                    class="form-control form-control-sm shadow mb-2 required">
-
-                </select>
-                <span id="application_type_id_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-4 form-group">
-                <label class="col-form-label text-sm text-secondary">TYPE OF BUSINESS<span
-                        class="text-danger">&#42;</span>
-                </label>
-
-                <select id="business_type_id" name="business_type_id"
-                    class="form-control form-control-sm shadow mb-2 select2" multiple>
-
-                </select>
-                <span id="business_type_id_error" class="error text-danger"></span>
-            </div>
-
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary"> OTHER BUSINESS TYPE </label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="other_business_type"
-                    name="other_business_type" placeholder="OTHER BUSINESS TYPE" />
-                <span id="other_business_type_error" class="error text-danger"></span>
-            </div>
-
-
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">
-                    NON-PROFIT FEDERAL TAX EXEMPT <span class="text-danger"></span>
-                </label>
-                <select name="non_profit" id="non_profit" class="form-control form-control-sm shadow mb-2 required">
-                    <option value="0">NO</option>
-                    <option value="1">YES</option>
-                </select>
-                <span id="non_profit_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">TAX ID NUMBER <span
-                        class="text-danger"></span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="tax_id_number"
-                    name="tax_id_number" placeholder="TAX ID NUMBER" />
-                <span id="tax_id_number_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-6 form-group">
-                <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">WILL YOUR FOOD
-                    PREPARATION REQUIRE A SPECIAL PROCESS
-                </label>
-
-                <select id="special_process" name="special_process"
-                    class="form-control form-control-sm shadow mb-2 select2" multiple>
-
-                </select>
-                <span id="special_process_id_error" class="error text-danger"></span>
-            </div>
-
-
+          <!-- @if (f['application_date'].touched && f['application_date'].hasError('required')) {
+            <span class="error text-danger">Application date is required.</span>
+          } -->
         </div>
+        <div class="col-sm-2 form-group">
+          <label class="col-form-label text-sm text-secondary">APPLICATION FOR <span
+              class="text-danger">&#42;</span></label>
+          <select id="application_type_id" name="application_type_id"
+            class="form-control form-control-sm shadow mb-2 required" formControlName="application_type_id">
+
+          </select>
+          <span id="application_type_id_error" class="error text-danger"></span>
+        </div>
+
+        <div class="col-sm-4 form-group">
+          <label class="col-form-label text-sm text-secondary">TYPE OF BUSINESS<span class="text-danger">&#42;</span>
+          </label>
+
+          <select id="business_type_id" name="business_type_id" class="form-control form-control-sm shadow mb-2 select2"
+            multiple formControlName="business_type_id">
+
+          </select>
+          <span id="business_type_id_error" class="error text-danger"></span>
+        </div>
+
+
+        <div class="col-sm-2  form-group">
+          <label class="col-form-label text-sm text-secondary"> OTHER BUSINESS TYPE </label>
+          <input type="text" class="form-control form-control-sm shadow mb-2 required" id="other_business_type"
+            name="other_business_type" placeholder="OTHER BUSINESS TYPE" formControlName="other_business_type">
+          <span id="other_business_type_error" class="error text-danger"></span>
+        </div>
+
+
+        <div class="col-sm-3  form-group">
+          <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">
+            NON-PROFIT FEDERAL TAX EXEMPT <span class="text-danger"></span>
+          </label>
+          <select name="non_profit" id="non_profit" class="form-control form-control-sm shadow mb-2 required"
+            formControlName="non_profit">
+            <option value="0">NO</option>
+            <option value="1">YES</option>
+          </select>
+          <span id="non_profit_error" class="error text-danger"></span>
+        </div>
+
+        <div class="col-sm-2  form-group">
+          <label class="col-form-label text-sm text-secondary">TAX ID NUMBER <span class="text-danger"></span></label>
+          <input type="text" class="form-control form-control-sm shadow mb-2 required" id="tax_id_number"
+            name="tax_id_number" placeholder="TAX ID NUMBER" formControlName="tax_id_number">
+          <span id="tax_id_number_error" class="error text-danger"></span>
+        </div>
+
+        <div class="col-sm-6 form-group">
+          <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">WILL YOUR FOOD
+            PREPARATION REQUIRE A SPECIAL PROCESS
+          </label>
+
+          <select id="special_process" name="special_process" class="form-control form-control-sm shadow mb-2 select2"
+            multiple formControlName="special_process">
+
+          </select>
+          <span id="special_process_id_error" class="error text-danger"></span>
+        </div>
+
+
+      </div>
     </div>
+  </div>
 
 
-
-
-
-
-
-
-
-
+  <div class="card card-danger card-outline mb-4">
     <div class="card-header">
-        <h5 style="color:#022E5F;">Establishment Details</h5>
+      <div class="card-title">Disabled &amp; Readonly</div>
     </div>
     <div class="card-body">
-
-
-        <div class="row">
-
-
-            <div class="col-sm-3 form-group">
-                <label class="col-form-label text-sm text-secondary">ESTABLISHMENT NAME <span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" id="est_name" name="est_name"
-                    class="form-control form-control-sm shadow mb-2 required" placeholder="ESTABLISHMENT NAME" />
-                <span id="est_name_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3 form-group">
-                <label class="col-form-label text-sm text-secondary">ESTABLISHMENT ADDRESS <span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" id="est_mailing_address" name="est_mailing_address"
-                    class="form-control form-control-sm shadow mb-2 required" placeholder="ESTABLISHMENT ADDRESS" />
-                <span id="est_mailing_address_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary"> CITY <span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="est_mailing_city"
-                    name="est_mailing_city" placeholder="CITY" />
-                <span id="est_mailing_city_error" class="error text-danger"></span>
-            </div>
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">STATE<span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required"
-                    id="est_mailing_state" name="est_mailing_state" placeholder="STATE" />
-                <span id="est_mailing_state_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">ZIP<span class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required zip"
-                    id="est_mailing_zip" name="est_mailing_zip" placeholder="ZIP" />
-                <span id="est_mailing_zip_error" class="error text-danger"></span>
-            </div>
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary">PHONE NUMBER <span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required phone" id="est_phone"
-                    name="est_phone" placeholder="Establishment Phone Number" />
-                <span id="est_phone_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary">EMAIL <span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="est_email"
-                    name="est_email" placeholder="Establishment Email" />
-                <span id="est_email_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-bottom:10px;">
-                <div class="icheck-marine">
-                    <input type="checkbox" id="sameAddresscheck" name="sameAddresscheck">
-                    <label for="sameAddresscheck">
-                        Same As Establishment Address
-                    </label>
-                </div>
-            </div>
-
-            <div class="col-sm-3 form-group">
-                <label class="col-form-label text-sm text-secondary">MAILING ADDRESSEE
-                    <span class="text-danger">&#42;</span></label>
-                <input type="text" id="mailing_addressee" name="mailing_addressee"
-                    class="form-control form-control-sm shadow mb-2 required" placeholder="MAILING ADDRESSEE" />
-                <span id="mailing_addressee_error" class="error text-danger"></span>
-            </div>
-
-
-            <div class="col-sm-3 form-group">
-                <label class="col-form-label text-sm text-secondary">MAILING ADDRESS <span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" id="est_billing_address" name="est_billing_address"
-                    class="form-control form-control-sm shadow mb-2 required" placeholder="MAILING ADDRESS" />
-                <span id="est_billing_address_error" class="error text-danger"></span>
-            </div>
-            <div class="col-sm-3 form-group">
-                <label class="col-form-label text-sm text-secondary">MAILING ADDRESS 2 </label>
-                <input type="text" id="est_mailing_address_2" name="est_mailing_address_2"
-                    class="form-control form-control-sm shadow mb-2 required"
-                    placeholder="MAILING ADDRESS 2" />
-                <span id="est_mailing_address_2_error" class="error text-danger"></span>
-            </div>
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary"> CITY <span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="est_billing_city"
-                    name="est_billing_city" placeholder="CITY" />
-                <span id="est_billing_city_error" class="error text-danger"></span>
-            </div>
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary">STATE<span
-                        class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required"
-                    id="est_billing_state" name="est_billing_state" placeholder="STATE" />
-                <span id="est_billing_state_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary">ZIP<span class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required zip"
-                    id="est_billing_zip" name="est_billing_zip" placeholder="ZIP" />
-                <span id="est_billing_zip_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary">SEATING CAPACITY<span class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required "
-                    id="seating_capacity" name="seating_capacity" placeholder="SEATING CAPACITY" />
-                <span id="seating_capacity_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3 form-group"></div>
-
-                <div class="col-sm-3 form-group">
-                    <label class="col-form-label text-sm text-secondary">DAYS </label>
-                    <input type="text" class="form-control form-control-sm shadow mb-2 required"
-                         readonly />
-                    <span  class="error text-danger"></span>
-                </div>
-
-                <div class="col-sm-3 form-group">
-                    <label class="col-form-label text-sm text-secondary">HOURS OF OPERATION</label>
-                    <input type="text" class="form-control form-control-sm shadow mb-2 required"
-                        n placeholder="HOURS OF OPERATION"
-                        />
-                    <span  class="error text-danger"></span>
-                </div>
-
-
-
-        </div>
-
-
+      <div class="mb-3">
+        <label class="form-label" for="dis-text">Disabled text</label>
+        <input type="text" class="form-control" id="dis-text" value="Can't touch this" disabled="">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="ro-text">Readonly text</label>
+        <input type="text" class="form-control" id="ro-text" value="Read me, but don't write me" readonly="">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="dis-select">Disabled select</label>
+        <select id="dis-select" class="form-select" disabled="">
+          <option>Locked option</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="dis-check" disabled="">
+        <label class="form-check-label" for="dis-check">Can't check this</label>
+      </div>
     </div>
-
-    <div class="card-header">
-        <h5 style="color:#022E5F;">Owner Details</h5>
-    </div>
-    <div class="card-body">
-
-        <div class="row">
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">
-                    NAME OF OWNER<span class="text-danger">&#42;</span>
-                </label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="owner_name"
-                    name="owner_name" placeholder="NAME OF OWNER"
-                    value="" />
-                <span id="owner_name_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">OWNER’S ADDRESS <span class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="owner_address"
-                    name="owner_address" placeholder="OWNER’S ADDRESS" />
-                <span id="owner_address_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">CITY <span class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="owner_city"
-                    name="owner_city"  />
-                <span id="owner_city_error" class="error text-danger"></span>
-            </div>
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">STATE <span class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="owner_state"
-                    name="owner_state"  />
-                <span id="owner_state_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">ZIP <span class="text-danger">&#42;</span></label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required zip" id="owner_zip"
-                    name="owner_zip"  />
-                <span id="owner_zip_error" class="error text-danger"></span>
-            </div>
-
-
-            <div class="col-sm-2  form-group">
-                <label class="col-form-label text-sm text-secondary">OWNER’S PHONE NUMBER <span
-                        class="text-danger">&#42;</span> </label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required phone"
-                    id="owner_phone" name="owner_phone" placeholder="OWNER’S PHONE NUMBER"
-                    value="" />
-                <span id="owner_phone_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3 form-group">
-                <label class="col-form-label text-sm text-secondary">OWNER EMAIL ADDRESS </label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="owner_email"
-                    name="owner_email" placeholder="CONTACT'S EMAIL ADDRESS"
-                    value="" />
-                <span id="owner_email_error" class="error text-danger"></span>
-            </div>
-
-
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-bottom:10px;">
-                <div class="icheck-marine">
-                    <input type="checkbox" id="sameOwnercheck" name="sameOwnercheck">
-                    <label for="sameOwnercheck">
-                        Same As Owner Details
-                    </label>
-                </div>
-            </div>
-
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary">
-                    NAME OF ONSITE MANAGER
-                    <span class="text-danger">&#42;</span>
-                </label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="onsite_manager"
-                    name="onsite_manager" placeholder="NAME OF ONSITE MANAGER" />
-                <span id="onsite_manager_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary">MANAGER PHONE NUMBER</label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required phone"
-                    id="manager_phone" name="manager_phone" placeholder="MANAGER PHONE NUMBER" />
-                <span id="manager_phone_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3 form-group">
-                <label class="col-form-label text-sm text-secondary">MANAGER EMAIL ADDRESS</label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required" id="manager_email"
-                    name="manager_email" placeholder="MANAGER EMAIL ADDRESS" />
-                <span id="manager_email_error" class="error text-danger"></span>
-            </div>
-
-            <div class="col-sm-3 form-group">
-                <label class="col-form-label text-sm text-secondary">NAME OF CERTIFIED FOOD PROTECTION MANAGER</label>
-                <input type="text" class="form-control form-control-sm shadow mb-2 required"
-                    id="food_protection_manager" name="food_protection_manager"
-                    placeholder="FOOD PROTECTION MANAGER" />
-                <span id="food_protection_manager_error" class="error text-danger"></span>
-            </div>
+  </div>
 
 
 
 
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">
-                    SEWAGE DISPOSAL
-                </label>
-                <select name="sewage_disposal" id="sewage_disposal"
-                    class="form-control form-control-sm shadow mb-2 required">
-                    <option value="public_sewer">Public Sewer</option>
-                    <option value="septic_system">Septic System</option>
-                </select>
-            </div>
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">
-                    WATER SUPPLY
-                </label>
-                <select name="water_supply" id="water_supply"
-                    class="form-control form-control-sm shadow mb-2 required">
-                    <option value="public_water">Public Water</option>
-                    <option value="onsite_well">Onsite Well</option>
-                </select>
-            </div>
-
-            <div class="col-sm-3  form-group">
-                <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">
-                    GREASE TRAP
-                </label>
-                <select name="grease_trap" id="grease_trap"
-                    class="form-control form-control-sm shadow mb-2 required">
-                    <option value="indoor">Indoor</option>
-                    <option value="outdoor">Outdoor</option>
-                    <option value="not_applicable">Not Applicable</option>
-                </select>
-            </div>
 
 
 
 
-        </div>
 
-    </div>
-
-    <div class="card-header">
-
-    </div>
-
-
-    <div class="card-header">
-        <h5 style="color:#022E5F;">
-                Please upload the following documents as a .pdf, .png, or a .jpg. Max size per file 10mb.
-        </h5>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row border card" style="width: 80%;">
-                            <div class="card-header" style="font-size: 16px; font-weight: bold; color: blue;">
-                                Document upload (Images upload ----Upload Menu, Layout, Application
-                                Packet.)
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <label class="col-form-label text-sm text-secondary">Plan
-                                        Review <span class="text-danger">&#42;</span></label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="file" id="document_upload_1"
-                                            name="document_upload_1"
-                                            accept="image/jpeg, image/jpg, image/png, application/pdf" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" id="document_name_1"
-                                            name="document_name_1" placeholder="Plan Review" />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <label class="col-form-label text-sm text-secondary">Menu <span
-                                            class="text-danger">&#42;</span></label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="file" id="document_upload_2"
-                                            name="document_upload_2"
-                                            accept="image/jpeg, image/jpg, image/png, application/pdf" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" id="document_name_2"
-                                            name="document_name_2" placeholder="Menu" />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <label class="col-form-label text-sm text-secondary">Floor
-                                        Plan<span class="text-danger">&#42;</span></label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="file" id="document_upload_3"
-                                            name="document_upload_3"
-                                            accept="image/jpeg, image/jpg, image/png, application/pdf" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" id="document_name_3"
-                                            name="document_name_3" placeholder="Floor Plan" />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <label class="col-form-label text-sm text-secondary">CFPM
-                                        Certificates</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="file" id="document_upload_4"
-                                            name="document_upload_4"
-                                            accept="image/jpeg, image/jpg, image/png, application/pdf" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" id="document_name_4"
-                                            name="document_name_4" placeholder="CFPM Certificates" />
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-12">
-                        <div class='card card-primary'>
-                            <div class='card-body' id="applicantSignature">
-                                <div class="row">
-                                    <input type="hidden" name="applicantSignatureBase64"
-                                        id="applicantSignatureBase64" value="" />
-                                    <div class="col-md-12 col-sm-12">
-                                        <h6 class="control-label">
-                                            <label class="control-label text-secondary">
-                                                Applicant’s Signature:
-                                            </label>
-                                            <span class="pull-right">
-                                                <button type="button" data-action="clear"
-                                                    class="btn btn-xs btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                    Clear
-
-
-                                                </button>
-                                            </span>
-                                        </h6>
-                                        <div class="m-signature-pad border">
-                                            <div>
-                                                <canvas width="750" height="130"></canvas>
-                                            </div>
-                                            <input type="text" name="applicant_signature_date"
-                                                id="applicant_signature_date"
-                                                class="form-control form-control-sm form-control form-control-sm-sm mt-3 dateField"
-                                               
-                                                style="color: black;
-                                                                   font-weight: bold;">
-                                            <span id="applicant_signature_date_error"
-                                                class="error  text-danger"></span>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- /.box-body -->
-                        </div><!-- /.box -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
+  <div class="card-footer text-right">
+    <button type="submit" class="btn btn-sm btn-custom">
+      Submit Application
+    </button>
+  </div>
 </form>

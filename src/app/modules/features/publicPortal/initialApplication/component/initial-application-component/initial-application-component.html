@@ -14,59 +14,83 @@
             <h5 class="card-title" id="exampleModalLabel" style="color:#00050a">Apply For License</h5>
           </div>
           <div class="card-body">
-            <form id="applicationForm">
+            <form id="applicationForm" [formGroup]="applicationForm" (ngSubmit)="submitApplication()">
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                   <label style="font-weight:600" class="col-form-label">Application For <span
                       style="font-size: 20px ;color:red">*</span></label>
                   <select class="custom-select rounded-1 shadow mb-3 text-sm" id="application_for_id"
-                    name="application_for_id">
+                    name="application_for_id"  formControlName="applicationForId">
                     <option disabled="" selected="">---Select---</option>
 
                        @for (appFor of allApplicationFor(); track appFor.id; let i = $index) {
                           <option value="{{appFor.id}}">{{appFor.name}}</option>
                        }
-                    
+
                   </select>
-                  <span id="applicationError" class="text-danger"></span>
+                   @if (f['applicationForId'].hasError('required') && f['applicationForId'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
                 </div>
                 <div class="col-md-3">
-                  <label style="font-weight:600" class="col-form-label">Applicant First Name <span
+                  <label style="font-weight:600" class="col-form-label">Applicant Name <span
                       style="font-size: 20px ;color:red">*</span></label>
                   <input type="text" class="form-control shadow mb-3 text-sm" name="firstName" id="firstName"
-                    placeholder="Applicant First Name">
-                  <span id="firstNameError" class="text-danger"></span>
+                    placeholder="Applicant First Name" formControlName="name">
+                   @if (f['name'].hasError('required') && f['name'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
                 </div>
+
+
 
                 <div class="col-md-3">
-                  <label style="font-weight:600" class="col-form-label">Applicant Last Name <span
-                      style="font-size: 20px ;color:red">*</span></label>
-                  <input type="text" class="form-control shadow mb-3 text-sm" name="lastName" id="lastName"
-                    placeholder="Applicant Last Name">
-                  <span id="lastNameError" class="text-danger"></span>
-                </div>
-
-                <div class="col-md-2">
                   <label style="font-weight:600" class="col-form-label">Email<span
                       style="font-size: 20px ;color:red">*</span></label>
                   <input type="text" class="form-control shadow mb-3 text-sm" name="emailId" id="emailId"
-                    placeholder="Email">
-                  <span id="emailError" class="text-danger"></span>
+                    placeholder="Email" formControlName="email">
+                  @if (f['email'].hasError('required') && f['email'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                   <label style="font-weight:600" class="col-form-label">Contact Number <span
                       style="font-size: 20px ;color:red">*</span></label>
                   <input type="text" class="form-control shadow mb-3 text-sm" name="contactNumber" id="contactNumber" mask="(000) 000-0000"
-                    placeholder="Contact Number" inputmode="text">
-                  <span id="contactError" class="text-danger"></span>
+                    placeholder="Contact Number" inputmode="text" formControlName="contactNumber">
+                   @if (f['contactNumber'].hasError('required') && f['contactNumber'].touched) {
+                        <span class="error">
+                        This Field Is Required
+                        </span>
+                     }
                 </div>
               </div>
             </form>
           </div>
           <div class="card-footer">
-            <button type="button" class="btn btn-sm btn-custom float-right" onclick="getApplication()" id="applybtn">
-              Get Application Link</button>
-            <button type="button" style="visibility:hidden" class="float-right"> .</button>
+            <button
+              type="button"
+              class="btn btn-sm btn-custom float-right"
+              id="applybtn"
+              [disabled]="isLoading()"
+              (click)="submitApplication()">
+
+              @if (isLoading()) {
+                <span class="spinner-border spinner-border-sm mr-1"></span>
+                Please Wait...
+              } @else {
+                Get Application Link
+              }
+
+            </button>
+
+            <button type="button" style="visibility:hidden" class="float-right">.</button>
           </div>
         </div>
       </div>

@@ -13,4 +13,9 @@ export class InitialApplicationService {
         return this.httpser.getRequest(constants.backendUrl+constants.apiEndPiont.applicationFor);
       }
 
+
+      submitInitialApplication(data:any):Observable<any>{
+        return this.httpser.postRequest(constants.backendUrl+constants.apiEndPiont.createInitialApplication,data);
+      }
+
 }

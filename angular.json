@@ -26,7 +26,8 @@
               }
             ],
             "styles": [
-             "src/styles.css",
+              "src/material-theme.scss",
+              "src/styles.css",
               "node_modules/@relynn/ngx-toastr/toastr.css"
             ]
           },
