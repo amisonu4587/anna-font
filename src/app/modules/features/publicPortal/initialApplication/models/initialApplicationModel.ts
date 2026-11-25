@@ -11,3 +11,18 @@ class permitType {
   code!: string;
   isActive!: boolean;
 }
+
+export class ApplicationResponse {
+  isSuccess!: boolean;
+  statusCode!: number;
+  message!: string;
+  result!: ApplicationResult;
+}
+
+export class ApplicationResult {
+  applicationId!: number;
+  applicationNo!: string;
+}
+
+
+

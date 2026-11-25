@@ -5,6 +5,7 @@ import { RoleResponse } from '../../../role/models/RoleResponse';
 import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
+import { ApiResponse } from '../../model/user';
 
 @Component({
   imports: [RouterLink,ReactiveFormsModule,NgxMaskDirective],
@@ -74,7 +75,7 @@ getRoles(): void {
   }
 
   submitUser(){
-    this.userser.upsertUser(this.userForm.value).subscribe((res:any)=>{
+    this.userser.upsertUser(this.userForm.value).subscribe((res:ApiResponse<null>)=>{
       console.log(res);
       if (res.isSuccess === true) {
         this.toastr.success(res.message);

@@ -5,6 +5,7 @@ import { NgxMaskDirective } from 'ngx-mask';
 import { UserService } from '../../services/user-service';
 import { ToastrService } from '@relynn/ngx-toastr';
 import { RoleResponse } from '../../../role/models/RoleResponse';
+import { ApiResponse, UserDetails } from '../../model/user';
 
 @Component({
   imports: [RouterLink,ReactiveFormsModule,NgxMaskDirective],
@@ -81,7 +82,7 @@ export class UserUpdate {
 
   submitUser(){
     console.log(this.userForm.value);
-    this.userser.upsertUser(this.userForm.value).subscribe((res:any)=>{
+    this.userser.upsertUser(this.userForm.value).subscribe((res:ApiResponse<null>)=>{
       console.log(res);
       if (res.isSuccess === true) {
         this.toastr.success(res.message);
@@ -95,7 +96,7 @@ export class UserUpdate {
 
   getSingleData(): void {
   this.userser.singleUserData(null, this.userId).subscribe({
-    next: (res: any) => {
+    next: (res: ApiResponse<UserDetails>) => {
       console.log('User data:', res);
 
        this.userForm.patchValue({

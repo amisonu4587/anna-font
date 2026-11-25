@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { VerificationService } from '../../services/verification-service';
 import { ToastrService } from '@relynn/ngx-toastr';
+import { ApplicationVerificationResponse } from '../../models/verification';
 
 @Component({
   imports: [RouterLink],
@@ -28,17 +29,12 @@ constructor(private verifyser: VerificationService, private route: ActivatedRout
 
  verifyEmailLink(){
     this.verifyser.verificationEmailLink(this.id()).subscribe((res:any)=>{
-        // console.log(res);
+        console.log(ApplicationVerificationResponse);
         if(res.isSuccess){
-
           this.permit_type_id.set(res.result.applicationForId);
           this.code.set(res.result.applicationCode ?? '');
           this.id.set(res.result.applicationId ?? '');
           this.message.set(res.message ?? '');
-          // console.log('Permit Type:', this.permit_type_id());
-          // console.log('Code:', this.code());
-          // console.log('Application ID:', this.id());
-          // console.log('Message:', this.message());
         }
     })
  }

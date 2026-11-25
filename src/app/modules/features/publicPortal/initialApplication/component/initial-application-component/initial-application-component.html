@@ -106,3 +106,13 @@
     </section>
   </div>
 </main>
+
+@if (pageLoder()) {
+    <div id="loading-wrapper">
+        <div id="loading-content">
+            <i class="fas fa-spinner fa-pulse"
+               style="color: #E51E2A; font-size:160px">
+            </i>
+        </div>
+    </div>
+}

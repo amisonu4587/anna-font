@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { RoleResponse } from '../../../role/models/RoleResponse';
 import * as XLSX from 'xlsx-js-style';
 import Swal from 'sweetalert2';
+import { ApiResponse, UserListResponse } from '../../model/user';
 @Component({
   imports: [RouterLink, Pagination, ReactiveFormsModule],
   selector: 'app-user-list',
@@ -74,8 +75,9 @@ export class UserList {
       }
     };
 
-    this.userSer.userList(request).subscribe((res: any) => {
+    this.userSer.userList(request).subscribe((res: UserListResponse) => {
       if (res.isSuccess == true) {
+        // console.log(res);
         this.currentPage = res.result.currentPage;
         this.totalData = res.result.totalRecords;
         this.pageSize = res.result.recordsPerPage;
@@ -207,27 +209,6 @@ export class UserList {
 }
 
 
-//   userStatusChange(id: number, status: string) {
-//   console.log(id, status);
-
-//   this.userSer.userStatusChange({ status: status }, id).subscribe({
-//     next: (res: any) => {
-//       if (res.isSuccess === true) {
-//         this.toastr.success(res.message);
-//         this.loading.set(true);
-
-//         this.getUserList();
-//       } else {
-//         this.toastr.error(res.message);
-//       }
-//     },
-//     error: (err) => {
-//       console.error(err);
-//       this.toastr.error('Unable to update user status');
-//     }
-//   });
-// }
-
 
 userStatusChange(id: number, status: string) {
   const newStatus = status === 'Active' ? 'Inactive' : 'Active';
@@ -245,7 +226,8 @@ userStatusChange(id: number, status: string) {
   }).then((result) => {
     if (result.isConfirmed) {
       this.userSer.userStatusChange({ status: status }, id).subscribe({
-        next: (res: any) => {
+        next: (res: ApiResponse<null>) => {
+          console.log(res);
           if (res.isSuccess === true) {
             this.toastr.success(res.message);
             this.loading.set(true);
