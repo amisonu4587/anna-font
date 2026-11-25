@@ -1,148 +1,209 @@
-<form id="permitApplicationForm" enctype="multipart/form-data">
-  <input type="hidden" name="application_type" id="application_type" value="online" formControlName="application_type">
-  <input type="hidden" name="initial_applications" id="initial_applications" value=""
-    formControlName="initial_applications">
-  <div class="card-header" style="background-color: #787a7c;">
-    <h5 style="color:white">
-      Restaurant/Retail Food Permit Application <span class="text-warning"></span>
+<form id="permitApplicationForm" [formGroup]="applicationForm" (ngSubmit)="submitApplication()"
+  enctype="multipart/form-data">
+
+  <!-- Hidden Fields -->
+  <input type="hidden" formControlName="application_type">
+
+  <input type="hidden" formControlName="initial_applications">
+
+
+  <!-- Main Header -->
+  <div class="card-header permit-card-header">
+    <h5>
+      Restaurant/Retail Food Permit Application
     </h5>
   </div>
 
 
+  <!-- Basic Details -->
+  <div class="row">
 
+    <div class="col-12">
 
-
-
-  <div class="card card-danger card-outline mb-4">
-    <div class="card-header">
-      <div class="card-title">Basic Details</div>
-    </div>
-    <div class="card-body">
-
-      <div class="row">
-        <div class="col-sm-2 form-group">
-          <label class="col-form-label text-sm text-secondary">
-            APPLICATION DATE <span class="text-danger">&#42;</span>
-          </label>
-
-          <input
-            #applicationDate
-            type="date"
-            class="form-control form-control-sm shadow mb-2 required"
-            id="application_date"
-            name="application_date"
-            formControlName="application_date"
-            (click)="openDatePicker(applicationDate)"
-          />
-
-          <!-- @if (f['application_date'].touched && f['application_date'].hasError('required')) {
-            <span class="error text-danger">Application date is required.</span>
-          } -->
+      <div class="card card-danger card-outline mb-4">
+        <div class="card-header">
+          <div class="card-title">Basic Information</div>
         </div>
-        <div class="col-sm-2 form-group">
-          <label class="col-form-label text-sm text-secondary">APPLICATION FOR <span
-              class="text-danger">&#42;</span></label>
-          <select id="application_type_id" name="application_type_id"
-            class="form-control form-control-sm shadow mb-2 required" formControlName="application_type_id">
+        <div class="card-body">
+          <mat-card-content class="pt-3">
 
-          </select>
-          <span id="application_type_id_error" class="error text-danger"></span>
+            <div class="row">
+
+              <!-- APPLICATION DATE -->
+              <div class="col-sm-2 form-group">
+
+                <mat-form-field appearance="outline" class="w-100">
+
+                  <mat-label>Application Date</mat-label>
+
+                    <input
+                      matInput
+                      [matDatepicker]="applicationDatePicker"
+                      formControlName="application_date"
+                      placeholder="MM/DD/YYYY"
+                      readonly>
+
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="applicationDatePicker">
+                    </mat-datepicker-toggle>
+
+                    <mat-datepicker #applicationDatePicker>
+                    </mat-datepicker>
+
+                    @if (
+                      applicationForm.get('application_date')?.hasError('required') &&
+                      applicationForm.get('application_date')?.touched
+                    ) {
+                      <mat-error>
+                        Application date is required.
+                      </mat-error>
+                    }
+
+                  </mat-form-field>
+
+              </div>
+
+              <!-- SPECIAL PROCESS -->
+              <div class="col-sm-2 form-group">
+
+                <mat-form-field appearance="outline" class="w-100">
+
+                  <mat-label>
+                    Business Type
+                  </mat-label>
+
+                  <mat-select formControlName="business_type" multiple>
+
+                    <mat-option value="smoking">
+                      Smoking
+                    </mat-option>
+
+                    <mat-option value="curing">
+                      Curing
+                    </mat-option>
+
+                    <mat-option value="vacuum_packing">
+                      Reduced Oxygen Packaging
+                    </mat-option>
+
+                  </mat-select>
+
+                </mat-form-field>
+
+              </div>
+
+
+              <!-- OTHER BUSINESS TYPE -->
+              <div class="col-sm-2 form-group">
+
+                <mat-form-field appearance="outline" class="w-100">
+
+                  <mat-label>Other Business Type</mat-label>
+
+                  <input matInput type="text" placeholder="Other Business Type" formControlName="other_business_type">
+
+                </mat-form-field>
+
+              </div>
+
+
+              <!-- NON-PROFIT -->
+              <div class="col-sm-2 form-group">
+
+                <mat-form-field appearance="outline" class="w-100">
+
+                  <mat-label>
+                    Non-Profit Federal Tax Exempt
+                  </mat-label>
+
+                  <mat-select formControlName="non_profit">
+
+                    <mat-option [value]="0">
+                      NO
+                    </mat-option>
+
+                    <mat-option [value]="1">
+                      YES
+                    </mat-option>
+
+                  </mat-select>
+
+                </mat-form-field>
+
+              </div>
+
+
+              <!-- TAX ID NUMBER -->
+              <div class="col-sm-2 form-group">
+
+                <mat-form-field appearance="outline" class="w-100">
+
+                  <mat-label>Tax ID Number</mat-label>
+
+                  <input matInput type="text" placeholder="Tax ID Number" formControlName="tax_id_number">
+
+                </mat-form-field>
+
+              </div>
+
+
+              <!-- SPECIAL PROCESS -->
+              <div class="col-sm-2 form-group">
+
+                <mat-form-field appearance="outline" class="w-100">
+
+                  <mat-label>
+                    Special Process Required?
+                  </mat-label>
+
+                  <mat-select formControlName="special_process" multiple>
+
+                    <mat-option value="smoking">
+                      Smoking
+                    </mat-option>
+
+                    <mat-option value="curing">
+                      Curing
+                    </mat-option>
+
+                    <mat-option value="vacuum_packing">
+                      Reduced Oxygen Packaging
+                    </mat-option>
+
+                  </mat-select>
+
+                </mat-form-field>
+
+              </div>
+
+            </div>
+
+          </mat-card-content>
+
+
+
         </div>
-
-        <div class="col-sm-4 form-group">
-          <label class="col-form-label text-sm text-secondary">TYPE OF BUSINESS<span class="text-danger">&#42;</span>
-          </label>
-
-          <select id="business_type_id" name="business_type_id" class="form-control form-control-sm shadow mb-2 select2"
-            multiple formControlName="business_type_id">
-
-          </select>
-          <span id="business_type_id_error" class="error text-danger"></span>
-        </div>
-
-
-        <div class="col-sm-2  form-group">
-          <label class="col-form-label text-sm text-secondary"> OTHER BUSINESS TYPE </label>
-          <input type="text" class="form-control form-control-sm shadow mb-2 required" id="other_business_type"
-            name="other_business_type" placeholder="OTHER BUSINESS TYPE" formControlName="other_business_type">
-          <span id="other_business_type_error" class="error text-danger"></span>
-        </div>
-
-
-        <div class="col-sm-3  form-group">
-          <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">
-            NON-PROFIT FEDERAL TAX EXEMPT <span class="text-danger"></span>
-          </label>
-          <select name="non_profit" id="non_profit" class="form-control form-control-sm shadow mb-2 required"
-            formControlName="non_profit">
-            <option value="0">NO</option>
-            <option value="1">YES</option>
-          </select>
-          <span id="non_profit_error" class="error text-danger"></span>
-        </div>
-
-        <div class="col-sm-2  form-group">
-          <label class="col-form-label text-sm text-secondary">TAX ID NUMBER <span class="text-danger"></span></label>
-          <input type="text" class="form-control form-control-sm shadow mb-2 required" id="tax_id_number"
-            name="tax_id_number" placeholder="TAX ID NUMBER" formControlName="tax_id_number">
-          <span id="tax_id_number_error" class="error text-danger"></span>
-        </div>
-
-        <div class="col-sm-6 form-group">
-          <label class="col-form-label text-sm text-secondary" style="text-transform: capitalize">WILL YOUR FOOD
-            PREPARATION REQUIRE A SPECIAL PROCESS
-          </label>
-
-          <select id="special_process" name="special_process" class="form-control form-control-sm shadow mb-2 select2"
-            multiple formControlName="special_process">
-
-          </select>
-          <span id="special_process_id_error" class="error text-danger"></span>
-        </div>
-
-
       </div>
+
+
+
     </div>
+
+
+
   </div>
 
 
-  <div class="card card-danger card-outline mb-4">
-    <div class="card-header">
-      <div class="card-title">Disabled &amp; Readonly</div>
-    </div>
-    <div class="card-body">
-      <div class="mb-3">
-        <label class="form-label" for="dis-text">Disabled text</label>
-        <input type="text" class="form-control" id="dis-text" value="Can't touch this" disabled="">
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="ro-text">Readonly text</label>
-        <input type="text" class="form-control" id="ro-text" value="Read me, but don't write me" readonly="">
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="dis-select">Disabled select</label>
-        <select id="dis-select" class="form-select" disabled="">
-          <option>Locked option</option>
-        </select>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="dis-check" disabled="">
-        <label class="form-check-label" for="dis-check">Can't check this</label>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
+  <!-- Footer -->
   <div class="card-footer text-right">
+
     <button type="submit" class="btn btn-sm btn-custom">
+
       Submit Application
+
     </button>
+
   </div>
+
 </form>
