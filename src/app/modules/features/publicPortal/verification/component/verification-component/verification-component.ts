@@ -42,6 +42,23 @@ constructor(private verifyser: VerificationService, private route: ActivatedRout
     })
  }
 
+ formatPhoneNumber(phone: string | null | undefined): string {
+
+  if (!phone) {
+    return '';
+  }
+
+  // Remove all non-numeric characters
+  const digits = phone.replace(/\D/g, '');
+
+  // US phone number must contain 10 digits
+  if (digits.length !== 10) {
+    return phone;
+  }
+
+  return `(${digits.substring(0, 3)}) ${digits.substring(3, 6)}-${digits.substring(6, 10)}`;
+}
+
 
 
 

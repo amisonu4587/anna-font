@@ -12,7 +12,7 @@
           </div>
 
           <h3 class="text-danger fw-bold mb-2">
-            Link Has Been Expired!
+           Application Link Expired!
           </h3>
 
           <p class="text-muted mb-4">
@@ -20,12 +20,11 @@
           </p>
 
           <p class="text-muted">
-            This application verification link is no longer valid.
-            Please return to the home page to continue.
+           Please submit a new application to continue with the process.
           </p>
 
           <a
-            class="btn btn-primary mt-3 px-4"
+            class="btn btn-danger mt-3 px-4"
             routerLink="/">
 
             <i class="fas fa-home me-2"></i>
@@ -76,7 +75,7 @@
 
             <div class="detail-row">
               <span>Contact No.</span>
-              <strong>{{ app.contactNumber }}</strong>
+              <strong>{{ formatPhoneNumber(app.contactNumber) }}</strong>
             </div>
 
             <div class="detail-row">
@@ -99,7 +98,7 @@
           </p>
 
           <a
-            class="btn btn-primary mt-2 px-4"
+            class="btn btn-success mt-2 px-4"
             [routerLink]="[
               '/application/online-permit-application',
               app.applicationCode,
