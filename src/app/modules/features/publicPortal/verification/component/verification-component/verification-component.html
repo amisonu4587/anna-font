@@ -1,3 +1,121 @@
-<div class="alert alert-success">
-        {{message()}}. Please <a id="link" [routerLink]="['/application/online-permit-application',code(),permit_type_id(),id()]">Click here</a> to open the application portal page.
-</div>
+@if (applicationData(); as app) {
+
+  <div class="success-container">
+    <div class="card success-card shadow">
+      <div class="card-body text-center p-4 p-md-5">
+
+        @if (app.applicationStatusId == 3) {
+
+          <!-- Link Expired -->
+          <div class="expired-icon mb-3">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+
+          <h3 class="text-danger fw-bold mb-2">
+            Link Has Been Expired!
+          </h3>
+
+          <p class="text-muted mb-4">
+            {{ app.message }}
+          </p>
+
+          <p class="text-muted">
+            This application verification link is no longer valid.
+            Please return to the home page to continue.
+          </p>
+
+          <a
+            class="btn btn-primary mt-3 px-4"
+            routerLink="/">
+
+            <i class="fas fa-home me-2"></i>
+            Back to Home
+
+          </a>
+
+        } @else {
+
+          <!-- Success -->
+          <div class="success-icon mb-3">
+            <i class="fas fa-check"></i>
+          </div>
+
+          <h3 class="text-success fw-bold mb-2">
+            Application Submitted Successfully!
+          </h3>
+
+          <p class="text-muted mb-4">
+            {{ app.message }}
+          </p>
+
+          <hr>
+
+          <h5 class="text-start mb-3">Application Details</h5>
+
+          <div class="application-details text-start">
+
+            <div class="detail-row">
+              <span>Application For</span>
+              <strong>{{ app.applicationFor }}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Application No.</span>
+              <strong>{{ app.applicationNo }}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Name</span>
+              <strong>{{ app.applicantName }}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Email</span>
+              <strong>{{ app.email }}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Contact No.</span>
+              <strong>{{ app.contactNumber }}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Application Date</span>
+              <strong>{{ app.applicationDate}}</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>Application Status</span>
+              <strong>{{ app.applicationStatus }}</strong>
+            </div>
+
+          </div>
+
+          <hr>
+
+          <p class="text-muted mt-3">
+            Your application has been submitted successfully.
+            You can access your application portal using the link below.
+          </p>
+
+          <a
+            class="btn btn-primary mt-2 px-4"
+            [routerLink]="[
+              '/application/online-permit-application',
+              app.applicationCode,
+              app.applicationForId,
+              app.applicationId
+            ]">
+
+            <i class="fas fa-external-link-alt me-2"></i>
+            Open Application Portal
+
+          </a>
+
+        }
+
+      </div>
+    </div>
+  </div>
+
+}

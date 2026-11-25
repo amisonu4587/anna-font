@@ -46,7 +46,7 @@ export class UserUpdate {
         cellphone: [''],
         workPhone: [''],
         email: ['', [Validators.required, Validators.email]],
-        password: [''],
+        // password: [''],
       });
 
     this.getRoles();

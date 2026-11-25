@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../service/login-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from '@relynn/ngx-toastr';
 import { LoginResponse } from '../models/LoginResponse';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   selector: 'app-login-compenent',
   styleUrl: './login-compenent.css',
   templateUrl: './login-compenent.html',

@@ -13,6 +13,7 @@ import { InitialApplicationComponent } from './modules/features/publicPortal/ini
 import { VerificationComponent } from './modules/features/publicPortal/verification/component/verification-component/verification-component';
 import { ErrorPageComponent } from './modules/sheared/errorPage/component/error-page-component/error-page-component';
 import { ApplicationMasterComponent } from './modules/features/publicPortal/applicationMaster/component/application-master-component/application-master-component';
+import { ForgotPassword } from './modules/auth/forgotPassword/component/forgot-password/forgot-password';
 
 export const routes: Routes = [
 
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginCompenent
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPassword
   },
   {
     path: 'application',

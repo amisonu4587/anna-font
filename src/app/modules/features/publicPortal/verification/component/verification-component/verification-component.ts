@@ -17,6 +17,8 @@ export class VerificationComponent {
    id = signal<string>('');
    message = signal<string>('');
 
+   applicationData = signal<any>(null);
+
 
 constructor(private verifyser: VerificationService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
@@ -28,9 +30,10 @@ constructor(private verifyser: VerificationService, private route: ActivatedRout
  }
 
  verifyEmailLink(){
-    this.verifyser.verificationEmailLink(this.id()).subscribe((res:any)=>{
-        console.log(ApplicationVerificationResponse);
+    this.verifyser.verificationEmailLink(this.id()).subscribe((res:ApplicationVerificationResponse)=>{
+        console.log(res);
         if(res.isSuccess){
+          this.applicationData.set(res.result);
           this.permit_type_id.set(res.result.applicationForId);
           this.code.set(res.result.applicationCode ?? '');
           this.id.set(res.result.applicationId ?? '');

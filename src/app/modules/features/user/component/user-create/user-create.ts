@@ -44,7 +44,7 @@ export class UserCreate {
         cellphone: [''],
         workPhone: [''],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required],
+        // password: ['', Validators.required],
       });
 
     this.getRoles();
