@@ -28,11 +28,14 @@ export class ForgotPassword {
     const data = this.forgotPassword.value;
      if (this.forgotPassword.invalid) {
       this.forgotPassword.markAllAsTouched();
+        this.loading.set(false);
+
       return;
     }
 
     if (!data.notRobot) {
       this.toastr.error('Please verify that you are not a robot.');
+        this.loading.set(false);
       return;
     }
 
