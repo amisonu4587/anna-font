@@ -22,6 +22,8 @@ export const constants= {
       getSingleUserData:"GetUser",
       userStatusChange:"UserStatusChange",
       resetPassword:"ResetPassword",
+      forgotPassword:"ForgotPassword",
+
 
 
 
