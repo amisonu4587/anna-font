@@ -1,89 +1,120 @@
 <div class="login-container">
+
   <div class="login-box">
+
+    <!-- Logo -->
+    <!-- Logo -->
+    <div class="login-logo">
+      <a routerLink="/login">
+        <img src="images/engage1.png" alt="Anna" class="login-logo-img" />
+      </a>
+    </div>
+
+    <!-- Login Card -->
     <div class="card login-card">
-      <!-- Logo -->
-      <div class="card-header text-center">
-        <img src="images/annabigl.png" alt="Anna" class="login-logo" />
-      </div>
 
       <div class="card-body">
+
+        <p class="login-message">
+          Sign in to start your session
+        </p>
+
         <form [formGroup]="login" (ngSubmit)="Login()">
+
           <!-- Email -->
           <div class="form-group">
-            <div class="input-group rounded-pill shadow mb-3">
-              <span class="input-group-text">
-                <i class="fas fa-user"></i>
-              </span>
 
-              <input type="email" class="form-control" placeholder="Enter your Email" formControlName="username" />
+            <div class="input-group">
+
+              <input type="email" class="form-control" placeholder="Email" formControlName="username" />
+
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </div>
 
             </div>
+
             @if (f['username'].hasError('required') && f['username'].touched) {
-              <span class="errorMessage"> This Field Is Required </span>
+            <span class="errorMessage">This Field Is Required</span>
             }
+
           </div>
 
           <!-- Password -->
           <div class="form-group">
-            <div class="input-group rounded-pill shadow mb-3">
-              <span class="input-group-text">
-                <i class="fas fa-key"></i>
-              </span>
 
-              <input  [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Enter your Password"
+            <div class="input-group">
+
+              <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Password"
                 formControlName="password" />
 
+              <div class="input-group-append">
+                <span class="input-group-text password-icon" (click)="showPassword = !showPassword">
+                  <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                </span>
+              </div>
 
-              <span class="input-group-text password-icon"   (click)="showPassword = !showPassword">
-                <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
-              </span>
             </div>
-              @if (f.password.hasError('required') && f.password.touched) {
-              <span class="errorMessage">
-                This Field Is Required
-              </span>
-              }
+
+            @if (f['password'].hasError('required') && f['password'].touched) {
+            <span class="errorMessage">This Field Is Required</span>
+            }
+
           </div>
 
-          <!-- Remember + Login -->
-          <div class="row align-items-center">
-            <div class="col-md-7 col-sm-12">
+          <!-- Remember Me + Login -->
+          <div class="row align-items-center login-actions">
+
+            <div class="col-7">
               <div class="remember-me">
                 <input type="checkbox" id="remember" />
-
-                <label for="remember"> Remember Me </label>
+                <label for="remember">Remember Me</label>
               </div>
             </div>
 
-            <div class="col-md-5 col-sm-12">
-              <button class="btn btn-custom btn-block btn-sm" type="submit" [disabled]="login.invalid">
-                 @if (loading()) {
-                    <span
-                      class="spinner-border spinner-border-sm me-2"
-                      aria-hidden="true">
-                    </span>
-                    Logging in...
-                  } @else {
-                    Login
-                  }
+            <div class="col-5">
+              <button class="btn btn-custom btn-block" type="submit" [disabled]="login.invalid || loading()">
+
+                @if (loading()) {
+                <span class="spinner-border spinner-border-sm me-2"></span>
+                <!-- Logging in... -->
+                } @else {
+                Sign In
+                }
+
               </button>
             </div>
+
           </div>
+
         </form>
 
-        <!-- Forgot Password -->
-        <div class="text-center link-row">
-          <a routerLink="/forgot-password"> Forgot Password? </a>
-        </div>
-        <div class="text-center link-row">
-              <a routerLink="/application/online-application"> Go To Home Page </a>
-          </div>
+        <!-- Footer Links -->
+        <div class="login-footer">
 
-        <!-- Home -->
-        <!-- <div class="text-center link-row">
-                    <a href="javascript:void(0)"> Go To Home Page </a>
-                </div> -->
+          <a routerLink="/forgot-password">
+            <i class="fas fa-key"></i>
+            Forgot Password?
+          </a>
+
+          <a routerLink="/application/online-application">
+            <i class="fas fa-home"></i>
+            Go To Home Page
+          </a>
+
+        </div>
+
       </div>
+
     </div>
+
+    <!-- Bottom Text -->
+    <div class="login-caption">
+      SOFTWARE. SOLUTIONS. SUCCESS.
+    </div>
+
   </div>
+
 </div>
