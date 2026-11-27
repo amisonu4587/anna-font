@@ -1,4 +1,4 @@
-.logo-xl.brand-image-xs, .logo-xs.brand-image-xs {
+/* .logo-xl.brand-image-xs, .logo-xs.brand-image-xs {
     left: 59px;
     top: 12px;
     width: 46%;
@@ -31,4 +31,148 @@
       }
     }
   }
+} */
+/* ===== EC sidebar theme (AdminLTE 3 override) ===== */
+
+.ec-sidebar {
+    --ec-bg: #222d32;
+    --ec-red: #e3242b;
+    --ec-red-hover: #c91d24;
+    --ec-text: #ffffff;
+    --ec-text-muted: #c9d1d5;
+
+    background: var(--ec-bg);
+    overflow: hidden;
+}
+
+.ec-sidebar .brand-link {
+    background-color: #252d32;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ec-sidebar .sidebar {
+    background: var(--ec-bg);
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 150px; /* keep menu clear of the bottom swoosh */
+}
+
+/* ---------- Top-level links ---------- */
+.ec-sidebar .nav-sidebar > .nav-item {
+    margin-bottom: 4px;
+}
+
+.ec-sidebar .nav-sidebar > .nav-item > .nav-link {
+    color: var(--ec-text);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ec-sidebar .nav-sidebar > .nav-item > .nav-link .nav-icon {
+    font-size: 16px;
+    width: 1.6rem;
+    margin-right: 6px;
+    color: var(--ec-text);
+}
+
+.ec-sidebar .nav-sidebar > .nav-item > .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    color: var(--ec-text);
+}
+
+/* Open parent menu or active single link -> red pill */
+.ec-sidebar .nav-sidebar > .nav-item.menu-open > .nav-link,
+.ec-sidebar .nav-sidebar > .nav-item > .nav-link.active {
+    background-color: var(--ec-red) !important;
+    color: var(--ec-text) !important;
+    box-shadow: 0 2px 6px rgba(227, 36, 43, 0.35);
+}
+
+.ec-sidebar .nav-sidebar > .nav-item.menu-open > .nav-link:hover {
+    background-color: var(--ec-red-hover) !important;
+}
+
+/* Chevron: "<" closed, "v" open */
+.ec-sidebar .nav-sidebar .nav-link > p > .right {
+    font-size: 14px;
+    top: 0.65rem;
+    transition: transform 0.2s ease;
+}
+
+/* ---------- Sub-menu ---------- */
+.ec-sidebar .nav-treeview {
+    padding: 6px 0 4px 6px;
+}
+
+.ec-sidebar .nav-treeview > .nav-item > .nav-link {
+    color: var(--ec-text-muted);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 6px 12px;
+    background: transparent !important;
+    border-radius: 4px;
+}
+
+.ec-sidebar .nav-treeview > .nav-item > .nav-link .nav-icon {
+    font-size: 5px;          /* small white dot bullets */
+    width: 1.6rem;
+    vertical-align: middle;
+    color: var(--ec-text);
+}
+
+.ec-sidebar .nav-treeview > .nav-item > .nav-link:hover,
+.ec-sidebar .nav-treeview > .nav-item > .nav-link.active {
+    color: var(--ec-text);
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.ec-sidebar .nav-treeview > .nav-item > .nav-link.active {
+    font-weight: 700;
+}
+
+.ec-sidebar .nav-treeview > .nav-item > .nav-link.active .nav-icon {
+    color: var(--ec-red);
+}
+
+/* ---------- Bottom swoosh + logo ---------- */
+.ec-sidebar-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 150px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ec-swoosh {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 90px;
+}
+
+.ec-mark {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    width: 38px;
+    height: 38px;
+    transform: translateX(-50%);
+}
+
+/* Collapsed (mini) sidebar: keep things tidy */
+:host-context(body.sidebar-collapse) .ec-sidebar:not(:hover) .ec-swoosh {
+    opacity: 0.6;
+}
+
+:host-context(body.sidebar-collapse) .ec-sidebar:not(:hover) .sidebar {
+    padding: 0 4px;
 }
