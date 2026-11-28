@@ -5,17 +5,18 @@
         <h1 class="d-inline">Users</h1>
         <a routerLink="/associate-data/users/create"
           class="btn btn-sm btn-flat d-inline-block ml-2 mt-n2 elevation-2 text-white"
-          style="background-color: #55565A;">Add New User</a>
+          style="background-color: #E3242B"><i class="fa fa-plus-square" aria-hidden="true"></i> Add New User</a>
       </div>
 
       <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item">
-            <a href="">Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="">Users</a>
-          </li>
+        <ol class="breadcrumb float-sm-right ec-breadcrumb">
+            <li class="breadcrumb-item">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <a routerLink="/dashboard">Home</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <a routerLink="/associate-data/users">Users</a>
+            </li>
         </ol>
       </div>
     </div>
@@ -26,136 +27,100 @@
   <div class="row m-2">
     <div class="col-md-12">
       <div class="card card-outline" style="border-top: 3px solid #E51E2A">
+
         <div class="card-header">
-          <!-- @if (loading()) {
-          <div class="row">
-            <div class="col-md-2 col-sm-12">
-              <div class="form-group">
-                <div class="skeleton skeleton-label"></div>
-                <div class="skeleton skeleton-input"></div>
-              </div>
-            </div>
-
-            <div class="col-md-2 col-sm-12">
-              <div class="form-group">
-                <div class="skeleton skeleton-label"></div>
-                <div class="skeleton skeleton-input"></div>
-              </div>
-            </div>
-
-            <div class="col-md-1 col-sm-6" style="margin-top: 32px">
-              <div class="skeleton skeleton-search-btn"></div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 mt-4"></div>
-
-            <div class="col-md-2 col-sm-6 mt-4">
-              <div class="skeleton skeleton-entries"></div>
-            </div>
-          </div>
-          } @else { -->
-          <!-- Actual Search Form -->
           <div class="row align-items-end">
 
+            <!-- Search Filters -->
             <div class="col-md-10">
-
-              <form [formGroup]="filterForm" (ngSubmit)="searchUsers()" class="row col-md-9 align-items-end g-2">
+              <form [formGroup]="filterForm" (ngSubmit)="searchUsers()" class="row align-items-end g-2">
 
                 <!-- Name -->
-                <div class="col-md-2 col-sm-12">
+                <div class="col-md-2">
                   <label for="name">Name</label>
                   <input id="name" type="text" class="form-control form-control-sm rounded-0" formControlName="name"
                     placeholder="Name" />
                 </div>
 
                 <!-- Email -->
-                <div class="col-md-2 col-sm-12">
+                <div class="col-md-2">
                   <label for="email">Email</label>
                   <input id="email" type="text" class="form-control form-control-sm rounded-0" formControlName="email"
                     placeholder="Email" />
                 </div>
 
-                <div class="col-md-2 col-sm-12">
+                <!-- Status -->
+                <div class="col-md-2">
                   <label for="status">Status</label>
-
-                  <select class="form-control form-control-sm rounded-0" id="status" formControlName="status"
-                    name="status" required="">
-                    <option value="" selected>All</option>
+                  <select class="form-control form-control-sm rounded-0" id="status" formControlName="status">
+                    <option value="">All</option>
                     <option value="Active">Active</option>
                     <option value="InActive">InActive</option>
-
-
-
                   </select>
                 </div>
 
-
-                <div class="col-md-2 col-sm-12 ">
-
+                <!-- User Type -->
+                <div class="col-md-2">
                   <label for="roleId">User Type</label>
-                  <select class="form-control form-control-sm rounded-0" id="roleId" formControlName="roleId"
-                    name="roleId" required="">
-                    <option value="" selected>All</option>
-                    @for (role of allRoles(); track role.id; let i = $index) {
-                    <option value="{{role.id}}">{{role.name}}</option>
+                  <select class="form-control form-control-sm rounded-0" id="roleId" formControlName="roleId">
+                    <option value="">All</option>
+                    @for (role of allRoles(); track role.id) {
+                    <option [value]="role.id">{{ role.name }}</option>
                     }
-
                   </select>
                 </div>
 
-                <!-- Search -->
-                <div class="col-md-1 col-sm-12">
-                  <button type="submit" class="btn  btn-sm text-white" style="background-color: #55565A;color: white;">
-                    Search
-                  </button>
-                </div>
+                <!-- Buttons -->
+                <div class="col-md-4">
+                  <div class="d-flex align-items-center gap-2 flex-nowrap">
 
-                <!-- Clear -->
-                <div class="col-md-1 col-sm-12">
-                  <button class="btn btn-danger btn-sm text-white" (click)="clearFormData()">
-                    Clear
-                  </button>
-                </div>
+                    <button type="submit" class="btn btn-danger text-white ec-search-btn">
+                      <i class="fa fa-search"></i> Search
+                    </button>
 
-                <div class="col-md-2 col-sm-12">
-                  <button class="btn btn-info btn-sm text-white" [disabled]="isExporting()" (click)="exportToExcel()">
-                   @if (isExporting()) {
-                      <span
-                        class="spinner-border spinner-border-sm me-2"
-                        aria-hidden="true"
-                      ></span>
+                    <button type="button" class="btn btn-secondary btn-sm text-white" (click)="clearFormData()">
+                      <i class="fa fa-refresh"></i> Clear
+                    </button>
+
+                    <button type="button" class="btn btn-danger btn-sm text-white" [disabled]="isExporting()"
+                      (click)="exportToExcel()">
+                      @if (isExporting()) {
+                      <span class="spinner-border spinner-border-sm me-1"></span>
                       Exporting...
-                    } @else {
-                      Export
-                    }
-                  </button>
-                </div>
-              </form>
+                      } @else {
+                      <i class="fa fa-file"></i> Export
+                      }
+                    </button>
 
+                  </div>
+                </div>
+
+              </form>
             </div>
 
-
+            <!-- Page Size -->
             <div class="col-md-2">
-
-              <div class="col-md-1 col-sm-12 d-flex align-items-center gap-2 mt-2">
+              <div class="d-flex align-items-center justify-content-end gap-2 mt-2">
                 <label for="pageSize" class="mb-0">Show</label>
 
-                <select id="pageSize" class="form-select form-select-sm rounded-0" style="width: 80px"
+                <select id="pageSize" class="form-select form-select-sm rounded-0" style="width: 75px"
                   [value]="pageSize" (change)="changePageSize($event)">
-                  <option value="10" selected>10</option>
+                  <option value="10">10</option>
                   <option value="25">25</option>
                   <option value="50">50</option>
                   <option value="100">100</option>
                 </select>
 
-                <span>Entries</span>
+                <span class="text-nowrap">Entries</span>
               </div>
             </div>
 
-
           </div>
-          <!-- } -->
         </div>
+
+
+      </div>
+      <div class="card card-outline">
 
 
 
@@ -168,27 +133,27 @@
               <tr style="background-color: #55565A;color: white;">
                 <th># SL No.</th>
                 <th class="sortable" (click)="sortUsers('name')">
-                    Name
-                    <span class="sort-icons"></span>
+                  Name
+                  <span class="sort-icons"></span>
 
-                  </th>
+                </th>
 
-                  <th class="sortable" (click)="sortUsers('email')">
-                    Email
-                    <span class="sort-icons"></span>
+                <th class="sortable" (click)="sortUsers('email')">
+                  Email
+                  <span class="sort-icons"></span>
 
-                  </th>
+                </th>
 
-                  <th class="sortable" (click)="sortUsers('role')">
-                    Role
-                    <span class="sort-icons"></span>
+                <th class="sortable" (click)="sortUsers('role')">
+                  Role
+                  <span class="sort-icons"></span>
 
-                  </th>
+                </th>
 
-                  <th class="sortable" (click)="sortUsers('status')">
-                    Status
-                    <span class="sort-icons"></span>
-                  </th>
+                <th class="sortable" (click)="sortUsers('status')">
+                  Status
+                  <span class="sort-icons"></span>
+                </th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -252,44 +217,40 @@
           <table id="tabUserListView" class="table table-bordered table-striped table-sm shadow"
             style="text-align: center">
 
-              <thead>
-                <tr style="background-color: #55565A;color: white;">
-                  <th># SL No</th>
-                  <th class="sortable" (click)="sortUsers('name')">
-                    Name
-                    <span class="sort-icons"
-                      [class.asc]="sortingBy === 'name' && ascendingOrder"
-                      [class.desc]="sortingBy === 'name' && !ascendingOrder">
-                    </span>
-                  </th>
+            <thead>
+              <tr style="background-color: #55565A;color: white;">
+                <th># SL No</th>
+                <th class="sortable" (click)="sortUsers('name')">
+                  Name
+                  <span class="sort-icons" [class.asc]="sortingBy === 'name' && ascendingOrder"
+                    [class.desc]="sortingBy === 'name' && !ascendingOrder">
+                  </span>
+                </th>
 
-                  <th class="sortable" (click)="sortUsers('email')">
-                    Email
-                    <span class="sort-icons"
-                      [class.asc]="sortingBy === 'email' && ascendingOrder"
-                      [class.desc]="sortingBy === 'email' && !ascendingOrder">
-                    </span>
-                  </th>
+                <th class="sortable" (click)="sortUsers('email')">
+                  Email
+                  <span class="sort-icons" [class.asc]="sortingBy === 'email' && ascendingOrder"
+                    [class.desc]="sortingBy === 'email' && !ascendingOrder">
+                  </span>
+                </th>
 
-                  <th class="sortable" (click)="sortUsers('role')">
-                    Role
-                    <span class="sort-icons"
-                      [class.asc]="sortingBy === 'role' && ascendingOrder"
-                      [class.desc]="sortingBy === 'role' && !ascendingOrder">
-                    </span>
-                  </th>
+                <th class="sortable" (click)="sortUsers('role')">
+                  Role
+                  <span class="sort-icons" [class.asc]="sortingBy === 'role' && ascendingOrder"
+                    [class.desc]="sortingBy === 'role' && !ascendingOrder">
+                  </span>
+                </th>
 
-                  <th class="sortable" (click)="sortUsers('status')">
-                    Status
-                    <span class="sort-icons"
-                      [class.asc]="sortingBy === 'status' && ascendingOrder"
-                      [class.desc]="sortingBy === 'status' && !ascendingOrder">
-                    </span>
-                  </th>
+                <th class="sortable" (click)="sortUsers('status')">
+                  Status
+                  <span class="sort-icons" [class.asc]="sortingBy === 'status' && ascendingOrder"
+                    [class.desc]="sortingBy === 'status' && !ascendingOrder">
+                  </span>
+                </th>
 
-                  <th>Action</th>
-                </tr>
-              </thead>
+                <th>Action</th>
+              </tr>
+            </thead>
 
 
 
@@ -316,39 +277,44 @@
                     <i class="fa fa-trash-o"></i>
                   </button> -->
 
-                    <div class="btn-group mb-2" role="group" aria-label="Basic outlined example">
+                  <div class="btn-group mb-2" role="group" aria-label="Basic outlined example">
 
-                     @if (user.status === 'Active') {
-                      <a routerLink="/associate-data/users/update/{{user.id}}" class="btn btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
+                    @if (user.status === 'Active') {
+                    <a routerLink="/associate-data/users/update/{{user.id}}" class="btn btn-outline-secondary"
+                      title="Edit"><i class="fa fa-edit"></i></a>
 
-                        <button
-                          type="button"
-                          class="btn btn-outline-danger"
-                          title="Inactive"
-                          (click)="userStatusChange(user.id, user.status)">
+                    <button type="button" class="btn btn-outline-danger" title="Inactive"
+                      (click)="userStatusChange(user.id, user.status)">
 
-                          <i class="fa fa-times" aria-hidden="true"></i>
-                        </button>
-                      } @else {
-                        <button
-                          type="button"
-                          class="btn btn-outline-success"
-                          title="Active"
-                          (click)="userStatusChange(user.id, user.status)">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    } @else {
+                    <button type="button" class="btn btn-outline-success" title="Active"
+                      (click)="userStatusChange(user.id, user.status)">
 
-                          <i class="fa fa-check" aria-hidden="true"></i>
-                        </button>
-                      }
+                      <i class="fa fa-check" aria-hidden="true"></i>
+                    </button>
+                    }
 
-                    </div>
+                  </div>
                 </td>
               </tr>
               }
 
               @if (allUsers().length === 0) {
-              <tr>
+              <!-- <tr>
                 <td colspan="6" class="text-center">No users found</td>
-              </tr>
+              </tr> -->
+
+
+             <tr class="empty-state-row">
+              <td colspan="6">
+                <div class="empty-state">
+                  <i class="fas fa-users empty-state-icon" aria-hidden="true"></i>
+                  <p class="empty-state-text">No users found</p>
+                </div>
+              </td>
+            </tr>
               }
             </tbody>
 

@@ -222,3 +222,72 @@ th.sortable {
   cursor: pointer;
   pointer-events: auto;
 }
+
+
+.ec-breadcrumb {
+    background: transparent;
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.ec-breadcrumb .breadcrumb-item {
+    font-weight: 600;
+}
+
+.ec-breadcrumb .breadcrumb-item i {
+    color: #e3242b;
+    margin-right: 7px;
+    font-size: 14px;
+}
+
+.ec-breadcrumb .breadcrumb-item a {
+    color: #e3242b;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 2px;
+}
+
+.ec-breadcrumb .breadcrumb-item a:hover {
+    color: #c91d24;
+    text-decoration: underline;
+}
+
+.ec-breadcrumb .breadcrumb-item.active {
+    color: #55565a;
+}
+
+/* Breadcrumb separator */
+.ec-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    color: #999;
+}
+
+
+
+.empty-state-row td {
+  border: none;
+  background: #ffffff;
+  padding: 50px 16px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.empty-state-icon {
+  font-size: 46px;
+  color: #c7ccd4;
+  line-height: 1;
+}
+
+.empty-state-text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+}
+
